@@ -11,6 +11,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'twitter-bootstrap-rails'
 gem 'jquery-rails'
 gem 'devise'
+gem 'seed-fu'
 
 group :doc do
   gem 'sdoc', require: false

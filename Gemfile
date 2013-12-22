@@ -10,6 +10,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'twitter-bootstrap-rails'
 gem 'jquery-rails'
 gem 'devise'
+gem 'devise_invitable'
 gem 'seed-fu'
 
 group :doc do

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131222185317) do
+ActiveRecord::Schema.define(version: 20131222193800) do
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -40,5 +40,12 @@ ActiveRecord::Schema.define(version: 20131222185317) do
   add_index "users", ["invitation_token"], name: "index_users_on_invitation_token", unique: true
   add_index "users", ["invited_by_id"], name: "index_users_on_invited_by_id"
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "wikis", force: true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

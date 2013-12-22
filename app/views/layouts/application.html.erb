@@ -50,6 +50,9 @@
           <div class="container-fluid nav-collapse">
             <ul class="nav">
               <% if user_signed_in? %>
+                <% if can? :manage, current_user %>
+                  <li><%= link_to t('.invite'), new_user_invitation_path %></li>
+                <% end %>
                 <li><%= link_to t('.sign_out'), destroy_user_session_path, method: :delete %></li>
               <% else %>
                 <li><%= link_to t('.sign_in'), new_user_session_path %></li>

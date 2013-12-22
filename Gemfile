@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'cancan'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'devise'
 gem 'devise_invitable'

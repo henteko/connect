@@ -7,6 +7,7 @@ User.seed do |u|
   u.last_sign_in_at = Time.now
   u.current_sign_in_ip = '127.0.0.1'
   u.last_sign_in_ip = '127.0.0.1'
+  u.role = 'admin'
   u.created_at = Time.now
   u.updated_at = Time.now
 end

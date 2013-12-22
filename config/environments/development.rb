@@ -26,4 +26,7 @@ Connect::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+  # For devise gem
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 end

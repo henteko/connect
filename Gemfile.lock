@@ -49,6 +49,9 @@ GEM
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
       warden (~> 1.2.3)
+    devise_invitable (1.2.1)
+      actionmailer (>= 3.2.6, < 5)
+      devise (~> 3.0.0)
     diff-lcs (1.2.4)
     erubis (2.7.0)
     execjs (2.0.2)
@@ -179,6 +182,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   debugger
   devise
+  devise_invitable
   guard
   guard-rspec
   jbuilder (~> 1.2)

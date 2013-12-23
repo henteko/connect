@@ -30,4 +30,7 @@ end
 group :test do
   gem 'rspec-rails', '~> 2.0'
   gem 'coveralls', require: false
+  gem 'factory_girl_rails'
+  gem 'ffaker'
+  gem 'shoulda-matchers'
 end

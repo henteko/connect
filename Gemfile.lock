@@ -63,6 +63,12 @@ GEM
     docile (1.1.1)
     erubis (2.7.0)
     execjs (2.0.2)
+    factory_girl (4.2.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.2.1)
+      factory_girl (~> 4.2.0)
+      railties (>= 3.0.0)
+    ffaker (1.16.1)
     ffi (1.9.0)
     formatador (0.2.4)
     guard (1.8.1)
@@ -153,6 +159,8 @@ GEM
     seed-fu (2.3.0)
       activerecord (>= 3.1, < 4.1)
       activesupport (>= 3.1, < 4.1)
+    shoulda-matchers (2.4.0)
+      activesupport (>= 3.0.0)
     simplecov (0.8.2)
       docile (~> 1.1.0)
       multi_json
@@ -203,6 +211,8 @@ DEPENDENCIES
   debugger
   devise
   devise_invitable
+  factory_girl_rails
+  ffaker
   guard
   guard-rspec
   jbuilder (~> 1.2)
@@ -212,6 +222,7 @@ DEPENDENCIES
   sass-rails (~> 4.0.0)
   sdoc
   seed-fu
+  shoulda-matchers
   sqlite3
   turbolinks
   twitter-bootstrap-rails

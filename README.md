@@ -1,6 +1,7 @@
-[![Code Climate](https://codeclimate.com/repos/52b79e4069568073440066b0/badges/ca296142dd8e53e513b1/gpa.png)](https://codeclimate.com/repos/52b79e4069568073440066b0/feed)
-[![Coverage Status](https://coveralls.io/repos/camelmasa/connect/badge.png)](https://coveralls.io/r/camelmasa/connect)
 [![Build Status](https://travis-ci.org/camelmasa/connect.png)](https://travis-ci.org/camelmasa/connect)
+[![Coverage Status](https://coveralls.io/repos/camelmasa/connect/badge.png)](https://coveralls.io/r/camelmasa/connect)
+[![Code Climate](https://codeclimate.com/repos/52b79e4069568073440066b0/badges/ca296142dd8e53e513b1/gpa.png)](https://codeclimate.com/repos/52b79e4069568073440066b0/feed)
+[![Dependency Status](https://gemnasium.com/camelmasa/connect.png)](https://gemnasium.com/camelmasa/connect)
 
 Connect
 ======================

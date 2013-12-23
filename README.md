@@ -1,3 +1,5 @@
+[![Code Climate](https://codeclimate.com/repos/52b79e4069568073440066b0/badges/ca296142dd8e53e513b1/gpa.png)](https://codeclimate.com/repos/52b79e4069568073440066b0/feed)
+
 Connect
 ======================
 Connect is a complete open source knowledge share solution built with Ruby on Rails.

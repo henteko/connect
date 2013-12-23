@@ -8,6 +8,7 @@ Instration
 ```
 git clone git@github.com:camelmasa/connect.git
 cd connect
+rake db:migrate
 rails s
 ```
 
@@ -19,6 +20,7 @@ http://localhost:3000/
 ## sign in
 
 Email: admin@connect.com
+
 Password: admin123
 
 License

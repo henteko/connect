@@ -5,8 +5,9 @@ FactoryGirl.define do
   end
 
   factory :wiki do
-    title    'title'
-    body     'body'
-    raw_body 'body'
+    title     'title'
+    raw_title 'title'
+    body      'body'
+    raw_body  'body'
   end
 end

@@ -13,8 +13,9 @@ Instration
 ```
 git clone git@github.com:camelmasa/connect.git
 cd connect
-rake db:migrate
-rails s
+bundle exec rake db:migrate
+bundle exec rake db:seed_fu
+bundle exec rails s
 ```
 
 Browse

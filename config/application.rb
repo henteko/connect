@@ -21,7 +21,8 @@ module Connect
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.active_record.observers = [
-      :convert_markdown_to_html_observer
+      :convert_markdown_to_html_observer,
+      :convert_emoji_observer
     ]
   end
 end

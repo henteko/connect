@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140105081822) do
+ActiveRecord::Schema.define(version: 20140105163038) do
+
+  create_table "pages", force: true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "raw_body"
+    t.string   "raw_title"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -51,14 +60,5 @@ ActiveRecord::Schema.define(version: 20140105081822) do
   end
 
   add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
-
-  create_table "wikis", force: true do |t|
-    t.string   "title"
-    t.text     "body"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.text     "raw_body"
-    t.string   "raw_title"
-  end
 
 end

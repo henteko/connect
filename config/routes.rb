@@ -1,6 +1,6 @@
 Connect::Application.routes.draw do
 
-  resources :wikis, path: 'wiki'
+  resources :pages, path: 'page'
 
   devise_for :users, path: 'user'
 

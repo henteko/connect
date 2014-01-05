@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Wiki do
+describe Page do
   it { should validate_presence_of :raw_title }
   it { should validate_presence_of :raw_body }
 end

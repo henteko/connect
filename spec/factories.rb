@@ -4,7 +4,7 @@ FactoryGirl.define do
     password 'admin123'
   end
 
-  factory :wiki do
+  factory :page do
     title     'title'
     raw_title 'title'
     body      'body'

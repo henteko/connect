@@ -1,4 +1,4 @@
-class Wiki < ActiveRecord::Base
+class Page < ActiveRecord::Base
 
   validates :raw_title, presence: true
   validates :raw_body,  presence: true

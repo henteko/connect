@@ -1,6 +1,6 @@
 class ConvertMarkdownToHtmlObserver < ActiveRecord::Observer
 
-  observe :wiki
+  observe :page
 
   def before_save(record)
     record.body = Kramdown::Document.new(record.body).to_html

@@ -55,13 +55,13 @@ describe WikisController do
 
   describe '#create' do
     it 'returns 404' do
-      post :create, wiki: { title: 'title', body: 'body' }
+      post :create, wiki: { title: 'title', raw_body: 'body' }
       expect(response.status).to eq 404
     end
     context 'with sign in' do
       before { sign_in user }
       it 'returns 302' do
-        post :create, wiki: { title: 'title', body: 'body' }
+        post :create, wiki: { title: 'title', raw_body: 'body' }
         expect(response.status).to eq 302
       end
       it 'returns 200' do
@@ -74,13 +74,13 @@ describe WikisController do
   describe '#update' do
     let(:wiki) { create :wiki }
     it 'returns 404' do
-      patch :update, id: wiki.id, wiki: { title: 'title', body: 'body' }
+      patch :update, id: wiki.id, wiki: { title: 'title', raw_body: 'body' }
       expect(response.status).to eq 404
     end
     context 'with sign in' do
       before { sign_in user }
       it 'returns 302' do
-        patch :update, id: wiki.id, wiki: { title: 'title', body: 'body' }
+        patch :update, id: wiki.id, wiki: { title: 'title', raw_body: 'body' }
         expect(response.status).to eq 302
       end
       it 'returns 200' do

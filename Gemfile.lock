@@ -71,6 +71,7 @@ GEM
     ffaker (1.16.1)
     ffi (1.9.0)
     formatador (0.2.4)
+    gemoji (1.4.0)
     guard (1.8.1)
       formatador (>= 0.2.4)
       listen (>= 1.0.0)
@@ -216,6 +217,7 @@ DEPENDENCIES
   devise_invitable
   factory_girl_rails
   ffaker
+  gemoji
   guard
   guard-rspec
   jbuilder (~> 1.2)

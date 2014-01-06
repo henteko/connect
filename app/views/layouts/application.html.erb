@@ -51,6 +51,7 @@
             <ul class="nav pull-right">
               <% if user_signed_in? %>
                 <li><%= link_to t('.page'), pages_path %></li>
+                <li><%= link_to t('.blog'), blogs_path %></li>
                 <% if can? :manage, current_user %>
                   <li><%= link_to t('.invite'), new_user_invitation_path %></li>
                 <% end %>

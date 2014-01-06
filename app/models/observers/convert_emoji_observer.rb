@@ -1,6 +1,6 @@
 class ConvertEmojiObserver < ActiveRecord::Observer
 
-  observe :page
+  observe :page, :blog
 
   def before_save(record)
     record.title = convert_emoji_to_html(record.title)

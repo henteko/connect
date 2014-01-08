@@ -1,0 +1,10 @@
+<h1>Blog entry histories</h1>
+
+<% @blog.versions.reverse.each do |version| %>
+  <%= version.event %><br />
+  <% if version.event == 'update' %>
+    <%= version.reify.title %><br />
+    <%= version.reify.raw_body %><br />
+    <br />
+  <% end %>
+<% end %>

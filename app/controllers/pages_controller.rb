@@ -1,16 +1,11 @@
 class PagesController < ApplicationController
   before_action :render_404, unless: :user_signed_in?
-  before_action :set_page, only: [:show, :edit, :update, :destroy]
+  before_action :set_page, only: [:edit, :update, :destroy]
 
-  # GET /page
-  # GET /page.json
-  def index
-    @pages = Page.all
-  end
-
-  # GET /page/1
-  # GET /page/1.json
+  # GET /page/:url
+  # GET /page/:url.json
   def show
+    @page = Page.find_by_url(params[:url])
   end
 
   # GET /page/new
@@ -60,6 +55,11 @@ class PagesController < ApplicationController
       format.html { redirect_to pages_url }
       format.json { head :no_content }
     end
+  end
+
+  # GET /page/:url/history
+  def history
+    @page = Page.find_by_url(params[:url])
   end
 
   private

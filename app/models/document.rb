@@ -1,5 +1,7 @@
 class Document < ActiveRecord::Base
 
+  belongs_to :user
+
   validates :raw_title, presence: true
   validates :raw_body,  presence: true
 

@@ -5,7 +5,7 @@
     <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
     </p>
     <div class="row">
-      <% Page.order('updated_at').limit(6).each do |page| %>
+      <% Page.order('updated_at desc').limit(5).each do |page| %>
         <div class="col-8">
           <h2><%= page.title %></h2>
           <p><%= page.body.html_safe %></p>

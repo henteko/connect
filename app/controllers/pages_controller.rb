@@ -1,11 +1,12 @@
 class PagesController < ApplicationController
   before_action :render_404, unless: :user_signed_in?
-  before_action :set_page, only: [:edit, :update, :destroy]
+  before_action :set_page, only: [:update, :destroy]
 
   # GET /page/:url
   # GET /page/:url.json
   def show
     @page = Page.find_by_url(params[:url])
+    return redirect_to "/page/#{params[:url]}/edit" unless @page
   end
 
   # GET /page/new
@@ -13,8 +14,9 @@ class PagesController < ApplicationController
     @page = Page.new
   end
 
-  # GET /page/1/edit
+  # GET /page/:url/edit
   def edit
+    @page = Page.find_by_url(params[:url]) || Page.new(url: params[:url])
   end
 
   # POST /page
@@ -24,7 +26,8 @@ class PagesController < ApplicationController
 
     respond_to do |format|
       if @page.save
-        format.html { redirect_to @page, notice: 'Page was successfully created.' }
+        format.html { redirect_to "/page/#{@page.url}",
+                      notice: 'Page was successfully created.' }
         format.json { render action: 'show', status: :created, location: @page }
       else
         format.html { render action: 'new' }
@@ -38,7 +41,8 @@ class PagesController < ApplicationController
   def update
     respond_to do |format|
       if @page.update(page_params)
-        format.html { redirect_to @page, notice: 'Page was successfully updated.' }
+        format.html { redirect_to "/page/#{@page.url}",
+                      notice: 'Page was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

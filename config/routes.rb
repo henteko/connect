@@ -6,8 +6,9 @@ Connect::Application.routes.draw do
   root 'home#index'
 
   # Page routing
-  resources :pages, path: 'page', except: [:index, :show]
+  resources :pages, path: 'page', except: [:index, :show, :edit]
   get '/page/:url'         => 'pages#show'
+  get '/page/:url/edit'    => 'pages#edit'
   get '/page/:url/history' => 'pages#history'
 
   # Blog routing

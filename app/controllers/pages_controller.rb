@@ -57,6 +57,11 @@ class PagesController < ApplicationController
     end
   end
 
+  # GET /page/:url/history
+  def history
+    @page = Page.find_by_url(params[:url])
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

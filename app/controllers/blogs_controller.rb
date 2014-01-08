@@ -66,6 +66,12 @@ class BlogsController < ApplicationController
     end
   end
 
+  # GET /:username/:id/history
+  def history
+    user = User.find_by_username(params[:username])
+    @blog = Blog.find_by(id: params[:id], user: user)
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

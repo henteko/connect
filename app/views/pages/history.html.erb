@@ -1,0 +1,10 @@
+<h1>Page histories</h1>
+
+<% @page.versions.reverse.each do |version| %>
+  <%= version.event %><br />
+  <% if version.event == 'update' %>
+    <%= version.reify.title %><br />
+    <%= version.reify.raw_body %><br />
+    <br />
+  <% end %>
+<% end %>

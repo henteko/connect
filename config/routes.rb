@@ -7,11 +7,13 @@ Connect::Application.routes.draw do
 
   # Page routing
   resources :pages, path: 'page', except: [:index, :show]
-  get '/page/:url'     => 'pages#show'
+  get '/page/:url'         => 'pages#show'
+  get '/page/:url/history' => 'pages#history'
 
   # Blog routing
   resources :blogs, path: 'blog', except: [:index, :show]
-  get '/:username'     => 'blogs#index'
-  get '/:username/:id' => 'blogs#show'
+  get '/:username'             => 'blogs#index'
+  get '/:username/:id'         => 'blogs#show'
+  get '/:username/:id/history' => 'blogs#history'
 
 end

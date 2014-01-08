@@ -1,16 +1,18 @@
 class BlogsController < ApplicationController
   before_action :render_404, unless: :user_signed_in?
-  before_action :set_blog, only: [:show, :edit, :update, :destroy]
+  before_action :set_blog, only: [:edit, :update, :destroy]
 
-  # GET /blog
-  # GET /blog.json
+  # GET /:username
+  # GET /:username.json
   def index
-    @blogs = Blog.all
+    @blogs = User.find_by_username(params[:username]).blogs
   end
 
-  # GET /blog/1
-  # GET /blog/1.json
+  # GET /:username/:id
+  # GET /:username/:id.json
   def show
+    user = User.find_by_username(params[:username])
+    @blog = Blog.find_by(id: params[:id], user: user)
   end
 
   # GET /blog/new
@@ -29,7 +31,8 @@ class BlogsController < ApplicationController
 
     respond_to do |format|
       if @blog.save
-        format.html { redirect_to @blog, notice: 'Blog was successfully created.' }
+        format.html { redirect_to "/#{@blog.user.username}/#{@blog.id}",
+                      notice: 'Blog was successfully created.' }
         format.json { render action: 'show', status: :created, location: @blog }
       else
         format.html { render action: 'new' }
@@ -43,7 +46,8 @@ class BlogsController < ApplicationController
   def update
     respond_to do |format|
       if @blog.update(blog_params)
-        format.html { redirect_to @blog, notice: 'Blog was successfully updated.' }
+        format.html { redirect_to "/#{@blog.user.username}/#{@blog.id}",
+                      notice: 'Blog was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

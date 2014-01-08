@@ -7,4 +7,7 @@ Connect::Application.routes.draw do
 
   root 'home#index'
 
+  get '/:username'     => 'blogs#index'
+  get '/:username/:id' => 'blogs#show'
+
 end

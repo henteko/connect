@@ -4,6 +4,9 @@ Connect::Application.routes.draw do
 
   root 'home#index'
 
+  # User routing
+  resource :user, only: [:edit, :update]
+
   # Admin setting routing
   get '/admin' => 'admin#index'
   namespace :admin do

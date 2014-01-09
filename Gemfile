@@ -22,10 +22,6 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-group :development, :test do
-  gem 'debugger'
-end
-
 group :development do
   gem 'guard'
   gem 'guard-rspec'

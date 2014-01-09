@@ -1,0 +1,25 @@
+<h2>Links</h2>
+
+<div class="panel panel-default">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Url</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @links.each do |link| %>
+        <tr>
+          <td><%= link.title %></td>
+          <td><%= link.url %></td>
+          <td><%= link_to 'Edit', edit_link_path(link) %>
+          <%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= link_to 'New Link', new_link_path %>

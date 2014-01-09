@@ -14,6 +14,9 @@ Connect::Application.routes.draw do
     get 'role'
   end
 
+  # Link routing
+  resources :links, except: [:show]
+
   # Page routing
   resources :pages, path: 'page', except: [:index, :show, :edit]
   get '/page/:url'         => 'pages#show'

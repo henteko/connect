@@ -47,6 +47,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><%= link_to t('.create_page'), new_page_path %></li>
                 <li><%= link_to t('.create_entry'), new_blog_path %></li>
+                <li><%= link_to t('.links'), links_path %></li>
                 <% if can? :manage, current_user %>
                   <li><%= link_to t('.manage'), '/admin' %></li>
                 <% end %>

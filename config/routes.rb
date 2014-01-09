@@ -1,8 +1,15 @@
 Connect::Application.routes.draw do
 
-  devise_for :users, path: 'user'
+  devise_for :users, path: 'user', controllers: { invitations: 'users/invitations' }
 
   root 'home#index'
+
+  # Admin setting routing
+  get '/admin' => 'admin#index'
+  namespace :admin do
+    get 'notification'
+    get 'role'
+  end
 
   # Page routing
   resources :pages, path: 'page', except: [:index, :show, :edit]

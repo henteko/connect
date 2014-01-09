@@ -54,7 +54,7 @@
                 <li><%= link_to t('.create_page'), new_page_path %></li>
                 <li><%= link_to t('.create_entry'), new_blog_path %></li>
                 <% if can? :manage, current_user %>
-                  <li><%= link_to t('.invite'), new_user_invitation_path %></li>
+                  <li><%= link_to t('.manage'), '/admin' %></li>
                 <% end %>
                 <li><%= link_to t('.sign_out'), destroy_user_session_path, method: :delete %></li>
             </ul>

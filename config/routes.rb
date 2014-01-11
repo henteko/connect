@@ -2,7 +2,7 @@ Connect::Application.routes.draw do
 
   devise_for :users, path: 'user', controllers: { invitations: 'users/invitations' }
 
-  root 'home#index'
+  root 'pages#show', url: 'home'
 
   # User routing
   resource :user, only: [:edit, :update]

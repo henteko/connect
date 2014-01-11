@@ -1,12 +1,17 @@
-<p>
-  <strong>Title:</strong>
-  <%= @page.title.html_safe %>
-</p>
-
-<p>
-  <strong>Body:</strong>
-  <%= @page.body.html_safe %>
-</p>
-
-<%= link_to 'Edit',    "/page/#{@page.url}/edit" %> |
-<%= link_to 'History', "/page/#{@page.url}/history" %>
+<div class="row row-offcanvas row-offcanvas-right">
+  <div class="col-xs-12 col-sm-9">
+    <%= render '/shared/offcanvas' %>
+    <%= render '/shared/page_header', title: params[:url] %>
+    <p>
+      <strong>Title:</strong>
+      <%= @page.title.html_safe %>
+    </p>
+    <p>
+      <strong>Body:</strong>
+      <%= @page.body.html_safe %>
+    </p>
+    <%= link_to 'Edit',    "/page/#{@page.url}/edit" %> |
+    <%= link_to 'History', "/page/#{@page.url}/history" %>
+  </div><!--/span-->
+  <%= render 'navigation' if params[:url] == 'home' %>
+</div><!--/row-->

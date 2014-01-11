@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :render_404, unless: :user_signed_in?
+  before_action :redirect_to_sign_in, unless: :user_signed_in?
 
   # GET /user/edit
   def edit

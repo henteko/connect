@@ -19,4 +19,8 @@ class ApplicationController < ActionController::Base
 
     render template: 'errors/error_500', status: 500, layout: 'application'
   end
+
+  def redirect_to_sign_in
+    return redirect_to new_user_session_path
+  end
 end

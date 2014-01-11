@@ -1,29 +1,26 @@
-<h1>Listing pages</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @pages.each do |page| %>
-      <tr>
-        <td><%= page.title %></td>
-        <td><%= page.body %></td>
-        <td><%= link_to 'Show', page %></td>
-        <td><%= link_to 'Edit', edit_page_path(page) %></td>
-        <td><%= link_to 'Destroy', page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Page', new_page_path %>
+<div class="row row-offcanvas row-offcanvas-right">
+  <div class="col-xs-12 col-sm-9">
+    <%= render '/shared/offcanvas' %>
+    <%= render '/shared/page_header', title: t('.pages') %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Url</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @pages.each do |page| %>
+          <tr>
+            <td><%= page.title %></td>
+            <td><%= page.url %></td>
+            <td  class="col-sm-4"><%= link_to 'Edit', "/pages/#{page.url}/edit", class: 'btn btn-default' %>
+            <%= link_to 'Destroy', page, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= paginate @pages %>
+  </div><!--/span-->
+</div><!--/row-->

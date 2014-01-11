@@ -2,6 +2,11 @@ class PagesController < ApplicationController
   before_action :redirect_to_sign_in, unless: :user_signed_in?
   before_action :set_page, only: [:update, :destroy]
 
+  # GET /pages
+  def index
+    @pages = Page.page(params[:page])
+  end
+
   # GET /pages/:url
   # GET /pages/:url.json
   def show

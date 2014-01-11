@@ -18,7 +18,7 @@ Connect::Application.routes.draw do
   resources :links, except: [:show]
 
   # Page routing
-  resources :pages, except: [:index, :show, :edit]
+  resources :pages, except: [:show, :edit]
   get '/pages/:url'         => 'pages#show'
   get '/pages/:url/edit'    => 'pages#edit'
   get '/pages/:url/history' => 'pages#history'

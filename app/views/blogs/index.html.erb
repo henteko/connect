@@ -1,27 +1,26 @@
-<h1>Listing blogs</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @blogs.each do |blog| %>
-      <tr>
-        <td><%= blog.title %></td>
-        <td><%= blog.body %></td>
-        <td><%= link_to 'Show', blog %></td>
-        <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
-        <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+<div class="row row-offcanvas row-offcanvas-right">
+  <div class="col-xs-12 col-sm-9">
+    <%= render '/shared/offcanvas' %>
+    <%= render '/shared/page_header', title: t('.blog_entries') %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Url</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @blogs.each do |blog| %>
+          <tr>
+            <td><%= blog.title %></td>
+            <td><%= blog.url %></td>
+            <td  class="col-sm-4"><%= link_to 'Edit', edit_blog_path(blog), class: 'btn btn-default' %>
+            <%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= paginate @blogs %>
+  </div><!--/span-->
+</div><!--/row-->

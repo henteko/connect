@@ -5,7 +5,7 @@ class BlogsController < ApplicationController
   # GET /:username
   # GET /:username.json
   def index
-    @blogs = User.find_by_username(params[:username]).blogs
+    @blogs = Blog.page(params[:page])
   end
 
   # GET /:username/:id

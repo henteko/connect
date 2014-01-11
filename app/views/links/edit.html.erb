@@ -1,5 +1,7 @@
-<h1>Editing link</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', links_path %>
+<div class="row row-offcanvas row-offcanvas-right">
+  <div class="col-xs-12 col-sm-9">
+    <%= render '/shared/offcanvas' %>
+    <%= render '/shared/page_header', title: t('editing_link') %>
+    <%= render 'form' %>
+  </div><!--/span-->
+</div><!--/row-->

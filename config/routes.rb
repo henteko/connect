@@ -18,10 +18,10 @@ Connect::Application.routes.draw do
   resources :links, except: [:show]
 
   # Page routing
-  resources :pages, path: 'page', except: [:index, :show, :edit]
-  get '/page/:url'         => 'pages#show'
-  get '/page/:url/edit'    => 'pages#edit'
-  get '/page/:url/history' => 'pages#history'
+  resources :pages, except: [:index, :show, :edit]
+  get '/pages/:url'         => 'pages#show'
+  get '/pages/:url/edit'    => 'pages#edit'
+  get '/pages/:url/history' => 'pages#history'
 
   # Blog routing
   resources :blogs, path: 'blog', except: [:index, :show]

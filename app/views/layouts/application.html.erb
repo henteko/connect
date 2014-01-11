@@ -54,29 +54,24 @@
           <% if user_signed_in? %>
             <div class="collapse navbar-collapse">
               <ul class="nav navbar-nav navbar-right">
-                <li><%= link_to new_blog_path do %>
-                  <span class="glyphicon glyphicon-edit"></span> <%= t('.new_entry') %>
-                <% end %></li>
-                <li><%= link_to links_path do %>
-                  <span class="glyphicon glyphicon-link"></span> <%= t('.links') %>
-                <% end %></li>
+                <li><%= link_to t('.page'), pages_path %></li>
+                <li><%= link_to t('.create'), new_page_path %></li>
+                <li class="divider-vertical"></li>
+                <li><%= link_to t('.blog'), blogs_path %></li>
+                <li><%= link_to t('.new_entry'), new_blog_path %></li>
+                <li class="divider-vertical"></li>
+                <li><%= link_to t('.links'), links_path %></li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <span class="glyphicon glyphicon-cog"></span> <%= t('.setting') %><b class="caret"></b>
-                 </a>
+                    <%= t('.setting') %><b class="caret"></b>
+                  </a>
                   <ul class="dropdown-menu">
                     <% if can? :manage, current_user %>
-                      <li><%= link_to admin_notification_path do %>
-                        <span class="glyphicon glyphicon-stats"></span> <%= t('.project') %>
-                      <% end %></li>
+                      <li><%= link_to t('.project'), admin_notification_path %></li>
                     <% end %>
-                    <li><%= link_to edit_user_path do %>
-                      <span class="glyphicon glyphicon-user"></span> <%= t('.profile') %>
-                    <% end %></li>
+                    <li><%= link_to t('.profile'), edit_user_path %></li>
                     <li class="divider"></li>
-                    <li><%= link_to destroy_user_session_path, method: :delete do %>
-                      <span class="glyphicon glyphicon-log-out"></span> <%= t('.sign_out') %>
-                    <% end %></li>
+                    <li><%= link_to t('.sign_out'), destroy_user_session_path, method: :delete %></li>
                   </ul>
                 </li>
               </ul>

@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'breadcrumbs_on_rails'
 gem 'cancan'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'devise'

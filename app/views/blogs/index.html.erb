@@ -15,7 +15,7 @@
           <tr>
             <td><%= blog.title %></td>
             <td><%= blog.url %></td>
-            <td  class="col-sm-4"><%= link_to 'Edit', edit_blog_path(blog), class: 'btn btn-default' %>
+            <td  class="col-sm-4"><%= link_to 'Edit', blog.edit_path, class: 'btn btn-default' %>
             <%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
           </tr>
         <% end %>

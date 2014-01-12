@@ -24,9 +24,11 @@ Connect::Application.routes.draw do
   get '/pages/:url/history' => 'pages#history'
 
   # Blog routing
-  resources :blogs, path: 'blog', except: [:show]
+  resources :blogs, path: 'blog', except: [:new, :show, :edit]
   get '/:username'             => 'blogs#index'
+  get '/:username/new'         => 'blogs#new'
   get '/:username/:id'         => 'blogs#show'
+  get '/:username/:id/edit'    => 'blogs#edit'
   get '/:username/:id/history' => 'blogs#history'
 
 end

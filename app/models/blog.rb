@@ -5,6 +5,10 @@ class Blog < Document
     "/#{user.username}/#{id}"
   end
 
+  def edit_path
+    "#{path}/edit"
+  end
+
   def history_path
     "#{path}/history"
   end

@@ -11,7 +11,7 @@ class PagesController < ApplicationController
   # GET /pages/:url.json
   def show
     @page = Page.find_by_url(params[:url])
-    return redirect_to "/pages/#{params[:url]}/edit" unless @page
+    return redirect_to @page.edit_path unless @page
   end
 
   # GET /pages/new

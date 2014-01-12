@@ -79,6 +79,11 @@
       </div><!-- /.navbar -->
       <div class="container">
         <%= bootstrap_flash %>
+        <% if user_signed_in? && request.path_info != '/' %>
+          <ol class="breadcrumb">
+            <%= render_breadcrumbs tag: :li, separator: '' %>
+          </ol>
+        <% end %>
         <%= yield %>
       </div> <!-- /container -->
     </div> <!-- /wrap -->

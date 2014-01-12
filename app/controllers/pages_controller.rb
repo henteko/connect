@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   before_action :redirect_to_sign_in, unless: :user_signed_in?
   before_action :set_page, only: [:update, :destroy]
+  before_action :add_breadcrumb_to_pages_path
 
   # GET /pages
   def index
@@ -12,16 +13,20 @@ class PagesController < ApplicationController
   def show
     @page = Page.find_by_url(params[:url])
     return redirect_to @page.edit_path unless @page
+    add_breadcrumb @page.title, @page.path
   end
 
   # GET /pages/new
   def new
     @page = Page.new
+    add_breadcrumb 'Create page', new_page_path
   end
 
   # GET /pages/:url/edit
   def edit
     @page = Page.find_by_url(params[:url]) || Page.new(url: params[:url])
+    add_breadcrumb @page.title, @page.path
+    add_breadcrumb 'Editing page', @page.edit_path
   end
 
   # POST /pages
@@ -69,6 +74,8 @@ class PagesController < ApplicationController
   # GET /pages/:url/history
   def history
     @page = Page.find_by_url(params[:url])
+    add_breadcrumb @page.title, @page.path
+    add_breadcrumb 'Page history', @page.history_path
   end
 
   private
@@ -83,5 +90,9 @@ class PagesController < ApplicationController
     page = params.require(:page).permit(:raw_title, :raw_body, :url)
     page[:user_id] = current_user.id
     page
+  end
+
+  def add_breadcrumb_to_pages_path
+    add_breadcrumb 'pages', pages_path
   end
 end

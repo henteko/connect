@@ -1,6 +1,7 @@
 class LinksController < ApplicationController
   before_action :redirect_to_sign_in, unless: :user_signed_in?
   before_action :set_link, only: [:edit, :update, :destroy]
+  before_action :add_breadcrumb_to_links_path
 
   # GET /links
   # GET /links.json
@@ -11,10 +12,12 @@ class LinksController < ApplicationController
   # GET /links/new
   def new
     @link = Link.new
+    add_breadcrumb 'New link', new_link_path
   end
 
   # GET /links/1/edit
   def edit
+    add_breadcrumb "Edit #{@link.title}", edit_link_path(@link)
   end
 
   # POST /links
@@ -60,13 +63,17 @@ class LinksController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_link
-      @link = Link.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_link
+    @link = Link.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def link_params
-      params.require(:link).permit(:title, :url)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def link_params
+    params.require(:link).permit(:title, :url)
+  end
+
+  def add_breadcrumb_to_links_path
+    add_breadcrumb 'Links', links_path
+  end
 end

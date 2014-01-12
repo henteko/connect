@@ -7,6 +7,7 @@ class AdminController < ApplicationController
 
   # GET /admin/notification
   def notification
+    add_breadcrumb 'notification', admin_notification_path
   end
 
   # GET /admin/role

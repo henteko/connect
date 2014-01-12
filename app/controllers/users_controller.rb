@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   # GET /user/edit
   def edit
+    add_breadcrumb 'Profile', edit_user_path
   end
 
   # PUT /user

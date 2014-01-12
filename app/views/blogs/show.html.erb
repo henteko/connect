@@ -1,11 +1,10 @@
-<p>
-  <strong>Title:</strong>
-  <%= @blog.title.html_safe %>
-</p>
-
-<p>
-  <strong>Body:</strong>
-  <%= @blog.body.html_safe %>
-</p>
-
-<%= link_to 'Edit', edit_blog_path(@blog) %>
+<div class="row row-offcanvas row-offcanvas-right">
+  <div class="col-xs-12 col-sm-9">
+    <%= render '/shared/offcanvas' %>
+    <%= render 'page_header' %>
+    <div>
+      <%= @blog.body.html_safe %>
+    </div>
+  </div><!--/span-->
+  <%= render 'navigation' %>
+</div><!--/row-->

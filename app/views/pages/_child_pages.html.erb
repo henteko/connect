@@ -1,0 +1,8 @@
+<div>
+  <h2>Child Pages</h2>
+  <div class="list-group">
+  <% @page.child_pages.each do |child_page| %>
+    <%= link_to child_page.title, child_page.path, class: 'list-group-item' %>
+  <% end %>
+  </div>
+</div>

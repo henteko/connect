@@ -8,12 +8,13 @@ class PagesController < ApplicationController
     @pages = Page.page(params[:page])
   end
 
-  # GET /pages/:page_name
-  # GET /pages/:page_name.json
+  # GET /pages/:page_names
+  # GET /pages/:page_names.json
   def show
-    @page = Page.find_by_page_name(params[:page_name])
-    return redirect_to @page.edit_path unless @page
-    add_breadcrumb @page.title, @page.path
+    @page = Page.find_by_page_names(params[:page_names])
+    Page.where_page_names(params[:page_names]).each do |page|
+      add_breadcrumb page.title, page.path
+    end
   end
 
   # GET /pages/new
@@ -22,10 +23,12 @@ class PagesController < ApplicationController
     add_breadcrumb 'Create page', new_page_path
   end
 
-  # GET /pages/:page_name/edit
+  # GET /pages/:page_names/edit
   def edit
-    @page = Page.find_by_page_name(params[:page_name]) || Page.new(page_name: params[:page_name])
-    add_breadcrumb @page.title, @page.path
+    @page = Page.find_by_page_names(params[:page_names])
+    Page.where_page_names(params[:page_names]).each do |page|
+      add_breadcrumb page.title, page.path
+    end
     add_breadcrumb 'Editing page', @page.edit_path
   end
 
@@ -71,10 +74,12 @@ class PagesController < ApplicationController
     end
   end
 
-  # GET /pages/:page_name/history
+  # GET /pages/:page_names/history
   def history
-    @page = Page.find_by_page_name(params[:page_name])
-    add_breadcrumb @page.title, @page.path
+    @page = Page.find_by_page_names(params[:page_names])
+    Page.where_page_names(params[:page_names]).each do |page|
+      add_breadcrumb page.title, page.path
+    end
     add_breadcrumb 'Page history', @page.history_path
   end
 
@@ -87,7 +92,7 @@ class PagesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def page_params
-    page = params.require(:page).permit(:raw_title, :raw_body, :page_name)
+    page = params.require(:page).permit(:raw_title, :raw_body, :page_name, :parent_page_id)
     page[:user_id] = current_user.id
     page
   end

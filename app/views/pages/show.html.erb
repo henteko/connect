@@ -5,6 +5,7 @@
     <div>
       <%= @page.body.html_safe %>
     </div>
+    <%= render 'child_pages' %>
   </div><!--/span-->
-  <%= render 'navigation' if params[:page_name] == 'home' %>
+  <%= render 'navigation' if params[:page_names] == 'home' %>
 </div><!--/row-->

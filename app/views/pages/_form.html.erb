@@ -15,11 +15,15 @@
   <div class="form-group">
     <%= f.label :page_name, class: 'col-sm-2 control-label' %>
     <div class="col-sm-8">
-      <%= f.text_field :page_name, class: 'form-control', placeholder: :page_name, required: 'required' %>
+      <div class="input-group">
+        <span class="input-group-addon">http://localhost:3000/</span>
+        <%= f.text_field :page_name, class: 'form-control', placeholder: :page_name, required: 'required' %>
+      </div>
     </div>
   </div>
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-6">
+      <%= f.hidden_field :parent_page_id, value: params[:parent_page_id] %>
       <%= f.submit 'submit', class: 'btn btn-primary form-control' %>
     </div>
   </div>

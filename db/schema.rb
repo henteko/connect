@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140109102846) do
+ActiveRecord::Schema.define(version: 20140113075121) do
 
   create_table "comments", force: true do |t|
     t.integer  "blog_id"
@@ -33,10 +33,11 @@ ActiveRecord::Schema.define(version: 20140109102846) do
     t.text     "raw_body"
     t.string   "raw_title"
     t.string   "type"
-    t.string   "url"
+    t.string   "page_name"
     t.integer  "user_id"
   end
 
+  add_index "documents", ["page_name"], name: "index_documents_on_page_name"
   add_index "documents", ["user_id"], name: "index_documents_on_user_id"
 
   create_table "links", force: true do |t|

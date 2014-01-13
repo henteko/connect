@@ -1,7 +1,7 @@
 class Page < Document
 
   def path
-    "/pages/#{url}"
+    "/pages/#{page_name}"
   end
 
   def edit_path

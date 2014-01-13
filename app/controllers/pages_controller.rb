@@ -8,10 +8,10 @@ class PagesController < ApplicationController
     @pages = Page.page(params[:page])
   end
 
-  # GET /pages/:url
-  # GET /pages/:url.json
+  # GET /pages/:page_name
+  # GET /pages/:page_name.json
   def show
-    @page = Page.find_by_url(params[:url])
+    @page = Page.find_by_page_name(params[:page_name])
     return redirect_to @page.edit_path unless @page
     add_breadcrumb @page.title, @page.path
   end
@@ -22,9 +22,9 @@ class PagesController < ApplicationController
     add_breadcrumb 'Create page', new_page_path
   end
 
-  # GET /pages/:url/edit
+  # GET /pages/:page_name/edit
   def edit
-    @page = Page.find_by_url(params[:url]) || Page.new(url: params[:url])
+    @page = Page.find_by_page_name(params[:page_name]) || Page.new(page_name: params[:page_name])
     add_breadcrumb @page.title, @page.path
     add_breadcrumb 'Editing page', @page.edit_path
   end
@@ -36,7 +36,7 @@ class PagesController < ApplicationController
 
     respond_to do |format|
       if @page.save
-        format.html { redirect_to "/pages/#{@page.url}",
+        format.html { redirect_to "/pages/#{@page.page_name}",
                       notice: 'Page was successfully created.' }
         format.json { render action: 'show', status: :created, location: @page }
       else
@@ -51,7 +51,7 @@ class PagesController < ApplicationController
   def update
     respond_to do |format|
       if @page.update(page_params)
-        format.html { redirect_to "/pages/#{@page.url}",
+        format.html { redirect_to "/pages/#{@page.page_name}",
                       notice: 'Page was successfully updated.' }
         format.json { head :no_content }
       else
@@ -66,14 +66,14 @@ class PagesController < ApplicationController
   def destroy
     @page.destroy
     respond_to do |format|
-      format.html { redirect_to pages_url }
+      format.html { redirect_to pages_path }
       format.json { head :no_content }
     end
   end
 
-  # GET /pages/:url/history
+  # GET /pages/:page_name/history
   def history
-    @page = Page.find_by_url(params[:url])
+    @page = Page.find_by_page_name(params[:page_name])
     add_breadcrumb @page.title, @page.path
     add_breadcrumb 'Page history', @page.history_path
   end
@@ -87,7 +87,7 @@ class PagesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def page_params
-    page = params.require(:page).permit(:raw_title, :raw_body, :url)
+    page = params.require(:page).permit(:raw_title, :raw_body, :page_name)
     page[:user_id] = current_user.id
     page
   end

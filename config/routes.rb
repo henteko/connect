@@ -2,7 +2,7 @@ Connect::Application.routes.draw do
 
   devise_for :users, path: 'user', controllers: { invitations: 'users/invitations' }
 
-  root 'pages#show', url: 'home'
+  root 'pages#show', page_name: 'home'
 
   # User routing
   resource :user, only: [:edit, :update]
@@ -19,9 +19,9 @@ Connect::Application.routes.draw do
 
   # Page routing
   resources :pages, except: [:show, :edit]
-  get '/pages/:url'         => 'pages#show'
-  get '/pages/:url/edit'    => 'pages#edit'
-  get '/pages/:url/history' => 'pages#history'
+  get '/pages/:page_name'         => 'pages#show'
+  get '/pages/:page_name/edit'    => 'pages#edit'
+  get '/pages/:page_name/history' => 'pages#history'
 
   # Blog routing
   resources :blogs, path: 'blog', except: [:new, :show, :edit]

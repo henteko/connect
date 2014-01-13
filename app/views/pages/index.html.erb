@@ -14,8 +14,8 @@
         <% @pages.each do |page| %>
           <tr>
             <td><%= page.title %></td>
-            <td><%= page.url %></td>
-            <td  class="col-sm-4"><%= link_to 'Edit', "/pages/#{page.url}/edit", class: 'btn btn-default' %>
+            <td><%= page.page_name %></td>
+            <td  class="col-sm-4"><%= link_to 'Edit', page.edit_path, class: 'btn btn-default' %>
             <%= link_to 'Destroy', page, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
           </tr>
         <% end %>

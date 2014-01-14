@@ -64,6 +64,7 @@ class PagesController < ApplicationController
   # DELETE /pages/1
   # DELETE /pages/1.json
   def destroy
+    authorize! :destroy, @page
     @page.destroy
     respond_to do |format|
       format.html { redirect_to pages_path }

@@ -1,8 +1,9 @@
 require 'spec_helper'
 
 describe PagesController do
-  let(:user) { create :user }
-  let(:page) { create :page }
+  let(:user)       { create :user }
+  let(:page)       { create :page }
+  let(:admin_user) { create :user, role: 'admin' }
 
   describe '#index' do
     it 'redirect to sign in page' do
@@ -93,10 +94,20 @@ describe PagesController do
       delete :destroy, id: page.id
       expect(response.header['Location']).to eq new_user_session_url
     end
-    it 'returns 200' do
-      sign_in user
-      delete :destroy, id: page.id
-      expect(response.status).to eq 302
+    context 'with sign in admin user' do
+      before { sign_in admin_user }
+      it 'returns 302' do
+        delete :destroy, id: page.id
+        expect(response.status).to eq 302
+      end
+    end
+    context 'with sign in other user' do
+      before { sign_in user }
+      it 'raise CanCan::AccessDenied' do
+        expect {
+          delete :destroy, id: page.id
+        }.to raise_error(CanCan::AccessDenied)
+      end
     end
   end
 end

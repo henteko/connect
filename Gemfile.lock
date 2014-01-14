@@ -170,7 +170,7 @@ GEM
     seed-fu (2.3.0)
       activerecord (>= 3.1, < 4.1)
       activesupport (>= 3.1, < 4.1)
-    shoulda-matchers (2.4.0)
+    shoulda-matchers (2.5.0)
       activesupport (>= 3.0.0)
     simplecov (0.8.2)
       docile (~> 1.1.0)

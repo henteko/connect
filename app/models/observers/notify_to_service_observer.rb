@@ -5,5 +5,4 @@ class NotifyToServiceObserver < ActiveRecord::Observer
   def after_save(record)
     Services::Hipchat.notify(record) if ENV['HIPCHAT_NOTIFY_ACTIVE']
   end
-
 end

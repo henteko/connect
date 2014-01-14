@@ -6,7 +6,8 @@ class BlogsController < ApplicationController
   # GET /:username
   # GET /:username.json
   def index
-    @blogs = Blog.page(params[:page])
+    user = User.find_by_username(params[:username])
+    @blogs = Blog.where(user: user).page(params[:page])
   end
 
   # GET /:username/:id

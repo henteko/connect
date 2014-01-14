@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe PagesController do
+describe LinksController do
   let(:user) { create :user }
-  let(:page) { create :page }
+  let(:link) { create :link }
 
   describe '#index' do
     it 'redirect to sign in page' do
@@ -12,18 +12,6 @@ describe PagesController do
     it 'returns 200' do
       sign_in user
       get :index
-      expect(response.status).to eq 200
-    end
-  end
-
-  describe '#show' do
-    it 'redirect to sign in page' do
-      get :show, page_name: page.page_name
-      expect(response.header['Location']).to eq new_user_session_url
-    end
-    it 'returns 200' do
-      sign_in user
-      get :show, page_name: page.page_name
       expect(response.status).to eq 200
     end
   end
@@ -42,29 +30,29 @@ describe PagesController do
 
   describe '#edit' do
     it 'redirect to sign in page' do
-      get :edit, page_name: page.page_name
+      get :edit, id: link.id
       expect(response.header['Location']).to eq new_user_session_url
     end
     it 'returns 200' do
       sign_in user
-      get :edit, page_name: page.page_name
+      get :edit, id: link.id
       expect(response.status).to eq 200
     end
   end
 
   describe '#create' do
     it 'redirect to sign in page' do
-      post :create, page: { raw_title: 'title', raw_body: 'body' }
+      post :create, link: { title: 'title', url: 'url' }
       expect(response.header['Location']).to eq new_user_session_url
     end
     context 'with sign in' do
       before { sign_in user }
       it 'returns 302' do
-        post :create, page: { raw_title: 'title', raw_body: 'body' }
+        post :create, link: { title: 'title', url: 'url' }
         expect(response.status).to eq 302
       end
       it 'returns 200' do
-        post :create, page: { raw_title: 'title' }
+        post :create, link: { title: 'title' }
         expect(response.status).to eq 200
       end
     end
@@ -72,17 +60,17 @@ describe PagesController do
 
   describe '#update' do
     it 'redirect to sign in page' do
-      put :update, id: page.id, page: { raw_title: 'title', raw_body: 'body' }
+      put :update, id: link.id, link: { title: 'title', url: 'url' }
       expect(response.header['Location']).to eq new_user_session_url
     end
     context 'with sign in' do
       before { sign_in user }
       it 'returns 302' do
-        put :update, id: page.id, page: { raw_title: 'title', raw_body: 'body' }
+        put :update, id: link.id, link: { title: 'title', url: 'url' }
         expect(response.status).to eq 302
       end
       it 'returns 200' do
-        put :update, id: page.id, page: { raw_title: 'title', raw_body: '' }
+        put :update, id: link.id, link: { title: 'title', url: '' }
         expect(response.status).to eq 200
       end
     end
@@ -90,12 +78,12 @@ describe PagesController do
 
   describe '#destroy' do
     it 'redirect to sign in page' do
-      delete :destroy, id: page.id
+      delete :destroy, id: link.id
       expect(response.header['Location']).to eq new_user_session_url
     end
     it 'returns 200' do
       sign_in user
-      delete :destroy, id: page.id
+      delete :destroy, id: link.id
       expect(response.status).to eq 302
     end
   end

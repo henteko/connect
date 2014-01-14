@@ -1,54 +1,65 @@
 require 'spec_helper'
 
 describe BlogsController do
-  let(:user) { create :user }
-  let(:blog) { create :blog, user: user }
+  let(:blog_owner)  { create :user }
+  let(:blog_reader) { create :user }
+  let(:blog)        { create :blog, user: blog_owner }
 
   describe '#index' do
     it 'redirect to sign in page' do
-      get :index, username: user.username
+      get :index, username: blog_owner.username
       expect(response.header['Location']).to eq new_user_session_url
     end
     it 'returns 200' do
-      sign_in user
-      get :index, username: user.username
+      sign_in blog_owner
+      get :index, username: blog_owner.username
       expect(response.status).to eq 200
     end
   end
 
   describe '#show' do
     it 'redirect to sign in page' do
-      get :show, username: user.username, id: blog.id
+      get :show, username: blog_owner.username, id: blog.id
       expect(response.header['Location']).to eq new_user_session_url
     end
     it 'returns 200' do
-      sign_in user
-      get :show, username: user.username, id: blog.id
+      sign_in blog_owner
+      get :show, username: blog_owner.username, id: blog.id
       expect(response.status).to eq 200
     end
   end
 
   describe '#new' do
     it 'redirect to sign in page' do
-      get :new, username: user.username
+      get :new, username: blog_owner.username
       expect(response.header['Location']).to eq new_user_session_url
     end
     it 'returns 200' do
-      sign_in user
-      get :new, username: user.username
+      sign_in blog_owner
+      get :new, username: blog_owner.username
       expect(response.status).to eq 200
     end
   end
 
   describe '#edit' do
     it 'redirect to sign in page' do
-      get :edit, username: user.username, id: blog.id
+      get :edit, username: blog_owner.username, id: blog.id
       expect(response.header['Location']).to eq new_user_session_url
     end
-    it 'returns 200' do
-      sign_in user
-      get :edit, username: user.username, id: blog.id
-      expect(response.status).to eq 200
+    context 'with sign in blog owner' do
+      before { sign_in blog_owner }
+      it 'returns 200' do
+        get :edit, username: blog_owner.username, id: blog.id
+        expect(response.status).to eq 200
+      end
+    end
+    context 'with sign in other user' do
+      before { sign_in blog_reader }
+      it 'raise CanCan::AccessDenied' do
+        expect {
+          get :edit, username: blog_owner.username, id: blog.id
+        }.to raise_error(CanCan::AccessDenied)
+      end
     end
   end
 
@@ -57,8 +68,8 @@ describe BlogsController do
       post :create, blog: { raw_title: 'title', raw_body: 'body' }
       expect(response.header['Location']).to eq new_user_session_url
     end
-    context 'with sign in' do
-      before { sign_in user }
+    context 'with sign in blog owner' do
+      before { sign_in blog_owner }
       it 'returns 302' do
         post :create, blog: { raw_title: 'title', raw_body: 'body' }
         expect(response.status).to eq 302
@@ -75,8 +86,8 @@ describe BlogsController do
       put :update, id: blog.id, blog: { raw_title: 'title', raw_body: 'body' }
       expect(response.header['Location']).to eq new_user_session_url
     end
-    context 'with sign in' do
-      before { sign_in user }
+    context 'with sign in blog owner' do
+      before { sign_in blog_owner }
       it 'returns 302' do
         put :update, id: blog.id, blog: { raw_title: 'title', raw_body: 'body' }
         expect(response.status).to eq 302
@@ -86,16 +97,24 @@ describe BlogsController do
         expect(response.status).to eq 200
       end
     end
+    context 'with sign in other user' do
+      before { sign_in blog_reader }
+      it 'raise CanCan::AccessDenied' do
+        expect {
+          put :update, id: blog.id, blog: { raw_title: 'title', raw_body: 'body' }
+        }.to raise_error(CanCan::AccessDenied)
+      end
+    end
   end
 
   describe '#history' do
     it 'redirect to sign in page' do
-      get :history, username: user.username, id: blog.id
+      get :history, username: blog_owner.username, id: blog.id
       expect(response.header['Location']).to eq new_user_session_url
     end
     it 'returns 200' do
-      sign_in user
-      get :history, username: user.username, id: blog.id
+      sign_in blog_owner
+      get :history, username: blog_owner.username, id: blog.id
       expect(response.status).to eq 200
     end
   end
@@ -105,10 +124,20 @@ describe BlogsController do
       delete :destroy, id: blog.id
       expect(response.header['Location']).to eq new_user_session_url
     end
-    it 'returns 200' do
-      sign_in user
-      delete :destroy, id: blog.id
-      expect(response.status).to eq 302
+    context 'with sign in blog owner' do
+      before { sign_in blog_owner }
+      it 'returns 200' do
+        delete :destroy, id: blog.id
+        expect(response.status).to eq 302
+      end
+    end
+    context 'with sign in other user' do
+      before { sign_in blog_reader }
+      it 'raise CanCan::AccessDenied' do
+        expect {
+          delete :destroy, id: blog.id
+        }.to raise_error(CanCan::AccessDenied)
+      end
     end
   end
 end

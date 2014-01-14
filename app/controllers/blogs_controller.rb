@@ -24,6 +24,7 @@ class BlogsController < ApplicationController
 
   # GET /blog/1/edit
   def edit
+    authorize! :edit, @blog
     add_breadcrumb @blog.title, @blog.path
     add_breadcrumb 'Edit entry', @blog.edit_path
   end
@@ -48,6 +49,7 @@ class BlogsController < ApplicationController
   # PATCH/PUT /blog/1
   # PATCH/PUT /blog/1.json
   def update
+    authorize! :update, @blog
     respond_to do |format|
       if @blog.update(blog_params)
         format.html { redirect_to @blog.path,
@@ -63,6 +65,7 @@ class BlogsController < ApplicationController
   # DELETE /blog/1
   # DELETE /blog/1.json
   def destroy
+    authorize! :destroy, @blog
     @blog.destroy
     respond_to do |format|
       format.html { redirect_to blogs_url }

@@ -66,7 +66,7 @@ GEM
     ffaker (1.16.1)
     ffi (1.9.0)
     formatador (0.2.4)
-    gemoji (1.4.0)
+    gemoji (1.5.0)
     guard (1.8.1)
       formatador (>= 0.2.4)
       listen (>= 1.0.0)

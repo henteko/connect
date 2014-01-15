@@ -27,6 +27,10 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :production do
+  gem 'rails_12factor' # require heroku deploy
+end
+
 group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails', '~> 2.0'

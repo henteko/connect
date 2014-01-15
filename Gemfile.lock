@@ -28,6 +28,11 @@ GEM
     arel (4.0.1)
     atomic (1.1.14)
     bcrypt-ruby (3.1.2)
+    better_errors (1.1.0)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
     breadcrumbs_on_rails (2.3.0)
     builder (3.1.4)
     cancan (1.6.10)
@@ -47,6 +52,7 @@ GEM
       simplecov (>= 0.7)
       term-ansicolor
       thor
+    debug_inspector (0.0.2)
     devise (3.2.2)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -214,6 +220,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  better_errors
+  binding_of_caller
   breadcrumbs_on_rails
   cancan
   coffee-rails (~> 4.0.0)

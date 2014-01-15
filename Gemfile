@@ -24,6 +24,10 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :development, :test do
+  gem 'pry-rails'
+end
+
 group :development do
   gem 'guard'
   gem 'guard-rspec'

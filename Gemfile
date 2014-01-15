@@ -26,6 +26,7 @@ end
 
 group :development, :test do
   gem 'pry-rails'
+  gem 'rspec-rails', '~> 2.0'
 end
 
 group :development do
@@ -34,7 +35,6 @@ group :development do
 end
 
 group :test do
-  gem 'rspec-rails', '~> 2.0'
   gem 'coveralls', require: false
   gem 'factory_girl_rails'
   gem 'ffaker'

@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'Collegiate';
+  src: url('/assets/collegia.ttf') format('truetype');
+}
+.navbar-default{
+  .navbar-brand {
+    color: #222;
+    font-size: 35px;
+    font-family: 'Collegiate';
+    line-height: 25px;
+  }
+}

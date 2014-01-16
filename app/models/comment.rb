@@ -8,7 +8,7 @@ class Comment < ActiveRecord::Base
   has_paper_trail
 
   before_save do
-    self.body  = raw_body
+    self.body = raw_body
   end
 
 end

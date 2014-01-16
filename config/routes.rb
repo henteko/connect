@@ -10,7 +10,7 @@ Connect::Application.routes.draw do
   # Admin setting routing
   get '/admin' => 'admin#index'
   namespace :admin do
-    get 'notification'
+    resource :notification, only: [:show, :update]
     get 'role'
   end
 

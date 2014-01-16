@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140113075121) do
+ActiveRecord::Schema.define(version: 20140116083524) do
 
   create_table "comments", force: true do |t|
     t.integer  "blog_id"
@@ -43,6 +43,15 @@ ActiveRecord::Schema.define(version: 20140113075121) do
   create_table "links", force: true do |t|
     t.string   "title"
     t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "notifications", force: true do |t|
+    t.string   "type"
+    t.boolean  "active"
+    t.string   "room_name"
+    t.string   "token"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

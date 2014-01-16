@@ -2,6 +2,10 @@
   <div class="col-xs-12 col-sm-9">
     <%= render '/shared/offcanvas' %>
     <%= render '/shared/page_header', title: t('.notification') %>
+    <ul class="nav nav-tabs">
+      <li class="active"><%= link_to 'HipChat', admin_notification_path %></li>
+    </ul>
+    <%= render 'form' %>
   </div><!--/span-->
-  <%= render 'navigation', active: 'notification' %>
+  <%= render '/admin/navigation', active: 'notification' %>
 </div><!--/row-->

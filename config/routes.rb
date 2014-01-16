@@ -12,7 +12,6 @@ Connect::Application.routes.draw do
   namespace :admin do
     resource :notification, only: [:show, :update]
     resources :users, except: [:new, :show, :create]
-    get 'role'
   end
 
   # Link routing

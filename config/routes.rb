@@ -11,6 +11,7 @@ Connect::Application.routes.draw do
   get '/admin' => 'admin#index'
   namespace :admin do
     resource :notification, only: [:show, :update]
+    resources :users, except: [:new, :show, :create]
     get 'role'
   end
 

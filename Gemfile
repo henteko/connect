@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-ruby '2.1.0'
 
 gem 'breadcrumbs_on_rails'
 gem 'cancan'

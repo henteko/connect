@@ -5,7 +5,7 @@ class Hipchat < Notification
 
     # TODO: Add link to object page url
     # message << " <a href='#{object.url}'>#{object.title}</a>"
-    #
+
     client = HipChat::Client.new(token)
     client[room_name].send('Connect', message, notify: false,
                            message_format: 'html')

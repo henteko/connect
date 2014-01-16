@@ -19,6 +19,13 @@ FactoryGirl.define do
     url   'url'
   end
 
+  factory :notification do
+    type 'Hipchat'
+    active true
+    room_name 'Dev'
+    token 'token123456'
+  end
+
   factory :page do
     title     'title'
     raw_title 'title'

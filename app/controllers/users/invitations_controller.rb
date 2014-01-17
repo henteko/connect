@@ -1,5 +1,5 @@
 class Users::InvitationsController < Devise::InvitationsController
-  before_action :redirect_to_sign_in, unless: :user_signed_in?
+  before_action :redirect_to_sign_in, unless: :user_signed_in?, only: [:new, :create]
   before_action :render_404, only: [:new, :create], unless: -> { current_user.admin? }
   before_action :add_breadcrumb_to_invitation_path, only: [:new]
 

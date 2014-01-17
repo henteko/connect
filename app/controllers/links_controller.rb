@@ -12,12 +12,12 @@ class LinksController < ApplicationController
   # GET /links/new
   def new
     @link = Link.new
-    add_breadcrumb 'New link', new_link_path
+    add_breadcrumb t('.creating_link'), new_link_path
   end
 
   # GET /links/1/edit
   def edit
-    add_breadcrumb "Edit #{@link.title}", edit_link_path(@link)
+    add_breadcrumb t('.editing_link'), edit_link_path(@link)
   end
 
   # POST /links
@@ -28,7 +28,7 @@ class LinksController < ApplicationController
     respond_to do |format|
       if @link.save
         format.html { redirect_to links_path,
-                      notice: 'Link was successfully created.' }
+                      notice: t('.link_was_successfully_created') }
         format.json { render action: 'show', status: :created, location: @link }
       else
         format.html { render action: 'new' }
@@ -43,7 +43,7 @@ class LinksController < ApplicationController
     respond_to do |format|
       if @link.update(link_params)
         format.html { redirect_to links_path,
-                      notice: 'Link was successfully updated.' }
+                      notice: t('.link_was_successfully_updated') }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -74,6 +74,6 @@ class LinksController < ApplicationController
   end
 
   def add_breadcrumb_to_links_path
-    add_breadcrumb 'Links', links_path
+    add_breadcrumb t('link_list'), links_path
   end
 end

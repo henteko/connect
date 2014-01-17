@@ -19,14 +19,14 @@ class PagesController < ApplicationController
   # GET /pages/new
   def new
     @page = Page.new
-    add_breadcrumb 'Create page', new_page_path
+    add_breadcrumb t('.creating_page'), new_page_path
   end
 
   # GET /pages/:page_name/edit
   def edit
     @page = Page.find_by_page_name(params[:page_name]) || Page.new(page_name: params[:page_name])
     add_breadcrumb @page.title, @page.path
-    add_breadcrumb 'Editing page', @page.edit_path
+    add_breadcrumb t('.editing_page'), @page.edit_path
   end
 
   # POST /pages
@@ -37,7 +37,7 @@ class PagesController < ApplicationController
     respond_to do |format|
       if @page.save
         format.html { redirect_to "/pages/#{@page.page_name}",
-                      notice: 'Page was successfully created.' }
+                      notice: t('.page_was_successfully_created') }
         format.json { render action: 'show', status: :created, location: @page }
       else
         format.html { render action: 'new' }
@@ -52,7 +52,7 @@ class PagesController < ApplicationController
     respond_to do |format|
       if @page.update(page_params)
         format.html { redirect_to "/pages/#{@page.page_name}",
-                      notice: 'Page was successfully updated.' }
+                      notice: t('.page_was_successfully_updated') }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -76,7 +76,7 @@ class PagesController < ApplicationController
   def history
     @page = Page.find_by_page_name(params[:page_name])
     add_breadcrumb @page.title, @page.path
-    add_breadcrumb 'Page history', @page.history_path
+    add_breadcrumb t('.history'), @page.history_path
   end
 
   private
@@ -94,6 +94,6 @@ class PagesController < ApplicationController
   end
 
   def add_breadcrumb_to_pages_path
-    add_breadcrumb 'pages', pages_path
+    add_breadcrumb t('page_list'), pages_path
   end
 end

@@ -1,11 +1,11 @@
 <div class="row row-offcanvas row-offcanvas-right">
   <div class="col-xs-12 col-sm-9">
     <%= render '/shared/offcanvas' %>
-    <%= render '/shared/page_header', title: t('.blog_entries') %>
+    <%= render '/shared/page_header', title: t('.entry_list') %>
     <table class="table">
       <thead>
         <tr>
-          <th>Title</th>
+          <th><%= t('.title') %></th>
           <th></th>
         </tr>
       </thead>
@@ -13,8 +13,8 @@
         <% @blogs.each do |blog| %>
           <tr>
             <td><%= link_to blog.title, blog.path %></td>
-            <td  class="col-sm-4"><%= link_to 'Edit', blog.edit_path, class: 'btn btn-default' %>
-            <%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+            <td  class="col-sm-4"><%= link_to t('.edit'), blog.edit_path, class: 'btn btn-default' %>
+            <%= link_to t('.destroy'), blog, method: :delete, data: { confirm: t('are_you_sure?') }, class: 'btn btn-danger' %></td>
           </tr>
         <% end %>
       </tbody>

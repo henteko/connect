@@ -29,6 +29,6 @@ class ApplicationController < ActionController::Base
   private
 
   def add_breadcrumb_to_home
-    add_breadcrumb 'home', root_path
+    add_breadcrumb t('home'), root_path
   end
 end

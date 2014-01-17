@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   # GET /user/edit
   def edit
-    add_breadcrumb 'Profile', edit_user_path
+    add_breadcrumb t('.editing_profile'), edit_user_path
   end
 
   # PUT /user
@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if current_user.update(user_params)
         format.html { redirect_to edit_user_path,
-                      notice: 'User was successfully updated.' }
+                      notice: t('.user_was_successfully_updated') }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

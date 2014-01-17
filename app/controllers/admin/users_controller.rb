@@ -6,12 +6,12 @@ class Admin::UsersController < ApplicationController
   # GET /admin/users
   def index
     @users = User.page(params[:page])
-    add_breadcrumb 'users', admin_users_path
+    add_breadcrumb t('.manage_user'), admin_users_path
   end
 
   # GET /admin/users/1/edit
   def edit
-    add_breadcrumb 'users', admin_users_path
+    add_breadcrumb t('.manage_user'), admin_users_path
     add_breadcrumb @user.username, edit_admin_user_path(@user)
   end
 
@@ -19,7 +19,8 @@ class Admin::UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to edit_admin_user_path(@user), notice: 'User was successfully updated.' }
+        format.html { redirect_to edit_admin_user_path(@user),
+                      notice: t('.user_was_successfully_updated') }
         format.json { render action: 'show', status: :ok, location: @user }
       else
         format.html { render action: 'edit' }

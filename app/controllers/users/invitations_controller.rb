@@ -10,6 +10,6 @@ class Users::InvitationsController < Devise::InvitationsController
   end
 
   def add_breadcrumb_to_invitation_path
-    add_breadcrumb 'Send invitation', new_user_invitation_path
+    add_breadcrumb t('.add_user'), new_user_invitation_path
   end
 end

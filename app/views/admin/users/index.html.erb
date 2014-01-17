@@ -1,13 +1,13 @@
 <div class="row row-offcanvas row-offcanvas-right">
   <div class="col-xs-12 col-sm-9">
     <%= render '/shared/offcanvas' %>
-    <%= render '/shared/page_header', title: t('.users') %>
+    <%= render '/shared/page_header', title: t('.manage_user') %>
     <table class="table">
       <thead>
         <tr>
-          <th>Username</th>
-          <th>Email</th>
-          <th>Role</th>
+          <th><%= t('.username') %></th>
+          <th><%= t('.email') %></th>
+          <th><%= t('.role') %></th>
           <th></th>
         </tr>
       </thead>
@@ -17,8 +17,8 @@
             <td><%= user.username %></td>
             <td><%= user.email %></td>
             <td><%= user.role %></td>
-            <td  class="col-sm-4"><%= link_to 'Edit', edit_admin_user_path(user), class: 'btn btn-default' %>
-            <%= link_to 'Destroy', admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+            <td  class="col-sm-4"><%= link_to t('.edit'), edit_admin_user_path(user), class: 'btn btn-default' %>
+            <%= link_to t('.destroy'), admin_user_path(user), method: :delete, data: { confirm: t('are_you_sure?') }, class: 'btn btn-danger' %></td>
           </tr>
         <% end %>
       </tbody>

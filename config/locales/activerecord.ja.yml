@@ -66,3 +66,4 @@ ja:
         role: ロール
         password: パスワード
         password_confirmation: パスワードの再入力
+        remember_me: 保存する

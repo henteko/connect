@@ -37,60 +37,53 @@
     <%= javascript_include_tag "application" %>
   </head>
   <body>
-    <div id="wrap">
-      <div class="navbar navbar-default navbar-static-top" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-            <% if user_signed_in? %>
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-            <% end %>
-            <%= link_to 'Connect', root_path, class: 'navbar-brand' %>
-          </div><!-- /.navbar-header -->
+    <div class="navbar navbar-default navbar-static-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
           <% if user_signed_in? %>
-            <div class="collapse navbar-collapse">
-              <ul class="nav navbar-nav navbar-right">
-                <li><%= link_to t('.page'), pages_path %></li>
-                <li class="divider-vertical"><%= link_to t('.create'), new_page_path %></li>
-                <li><%= link_to t('.blog'), "/#{current_user.username}" %></li>
-                <li class="divider-vertical"><%= link_to t('.new_entry'), "/#{current_user.username}/new" %></li>
-                <li><%= link_to t('.links'), links_path %></li>
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <%= t('.setting') %><b class="caret"></b>
-                  </a>
-                  <ul class="dropdown-menu">
-                    <% if can? :manage, current_user %>
-                      <li><%= link_to t('.project'), admin_users_path %></li>
-                    <% end %>
-                    <li><%= link_to t('.profile'), edit_user_path %></li>
-                    <li class="divider"></li>
-                    <li><%= link_to t('.sign_out'), destroy_user_session_path, method: :delete %></li>
-                  </ul>
-                </li>
-              </ul>
-            </div><!-- /.nav-collapse -->
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
           <% end %>
-        </div><!-- /.container -->
-      </div><!-- /.navbar -->
-      <div class="container">
-        <%= bootstrap_flash %>
-        <% if user_signed_in? && request.path_info != '/' %>
-          <ol class="breadcrumb">
-            <%= render_breadcrumbs tag: :li, separator: '' %>
-          </ol>
+          <%= link_to 'Connect', root_path, class: 'navbar-brand' %>
+        </div><!-- /.navbar-header -->
+        <% if user_signed_in? %>
+          <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li><%= link_to t('.page'), pages_path %></li>
+              <li class="divider-vertical"><%= link_to t('.create'), new_page_path %></li>
+              <li><%= link_to t('.blog'), "/#{current_user.username}" %></li>
+              <li class="divider-vertical"><%= link_to t('.new_entry'), "/#{current_user.username}/new" %></li>
+              <li><%= link_to t('.links'), links_path %></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <%= t('.setting') %><b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <% if can? :manage, current_user %>
+                    <li><%= link_to t('.project'), admin_users_path %></li>
+                  <% end %>
+                  <li><%= link_to t('.profile'), edit_user_path %></li>
+                  <li class="divider"></li>
+                  <li><%= link_to t('.sign_out'), destroy_user_session_path, method: :delete %></li>
+                </ul>
+              </li>
+            </ul>
+          </div><!-- /.nav-collapse -->
         <% end %>
-        <%= yield %>
-      </div> <!-- /container -->
-    </div> <!-- /wrap -->
-    <div id="footer">
-      <div class="container">
-        <p class="text-muted"> </p>
-      </div>
-    </div>
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+    <div class="container">
+      <%= bootstrap_flash %>
+      <% if user_signed_in? && request.path_info != '/' %>
+        <ol class="breadcrumb">
+          <%= render_breadcrumbs tag: :li, separator: '' %>
+        </ol>
+      <% end %>
+      <%= yield %>
+    </div> <!-- /container -->
   </body>
 </html>

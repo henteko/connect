@@ -31,5 +31,6 @@ ja:
         password: パスワード
         password_confirmation: パスワードの再入力
     failure:
+      already_authenticated: 既にログイン済みです
       user:
         not_found_in_database: メールアドレスもしくはパスワードが間違えています

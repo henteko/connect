@@ -1,0 +1,11 @@
+ja:
+  users:
+    edit:
+      editing_profile: プロフィールの編集
+      username: ユーザー名
+      email: Email
+    update:
+      user_was_successfully_updated: プロフィールを更新しました
+    invitations:
+      new:
+        add_user: ユーザー追加

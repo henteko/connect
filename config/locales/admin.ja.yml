@@ -1,0 +1,31 @@
+ja:
+  admin:
+    users:
+      index:
+        manage_user: ユーザー管理
+        username: ユーザー名
+        email: Email
+        role: ロール
+        edit: 編集
+        destroy: 削除
+      edit:
+        manage_user: ユーザー管理
+        editing_user: ユーザーの編集
+      update:
+        user_was_successfully_updated: ユーザーを更新しました
+      form:
+        username: ユーザー名
+        email: Email
+        role: ロール
+    notifications:
+      show:
+        setting_notification: 通知設定
+      update:
+        notification_was_successfully_updated: 通知設定を更新しました
+      form:
+        room_name: ルーム名
+        token: トークン
+    navigation:
+      manage_user: ユーザー管理
+      setting_notification: 通知設定
+      add_user: ユーザー追加

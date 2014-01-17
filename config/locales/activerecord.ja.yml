@@ -1,0 +1,68 @@
+ja:
+  activerecord:
+    models:
+      blog: blog
+      comment: comment
+      document: document
+      hipchat: hipchat
+      link: link
+      notification: notification
+      page: page
+      paper_trail/version: paper_trail/version
+      user: user
+    attributes:
+      blog:
+        body: body
+        comments: comments
+        page_name: page_name
+        raw_body: 本文
+        raw_title: タイトル
+        title: title
+        user: :activerecord.models.user
+        versions: versions
+
+      comment:
+        blog: :activerecord.models.blog
+        body: body
+        raw_body: 本文
+        user: :activerecord.models.user
+        versions: versions
+
+      document:
+        body: body
+        page_name: page_name
+        raw_body: raw_body
+        raw_title: raw_title
+        title: title
+        user: :activerecord.models.user
+        versions: versions
+
+      hipchat:
+        active: active
+        room_name: room_name
+        token: token
+
+      link:
+        title: タイトル
+        url: URL
+
+      notification:
+        active: active
+        room_name: room_name
+        token: token
+
+      page:
+        body: body
+        page_name: ページURL
+        raw_body: 本文
+        raw_title: タイトル
+        title: title
+        user: :activerecord.models.user
+        versions: versions
+
+      user:
+        username: ユーザー名
+        email: Email
+        role: ロール
+        password: パスワード
+        password_confirmation: パスワードの再入力

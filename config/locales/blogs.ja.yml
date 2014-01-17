@@ -1,0 +1,26 @@
+ja:
+  blogs:
+    navigation:
+      recent_entries: 最近の投稿
+    index:
+      entry_list: 投稿一覧
+      title: タイトル
+      edit: 編集
+      destroy: 削除
+    show:
+      comment: コメント
+      comments: コメント
+      raw_body: 本文
+    edit:
+      editing_entry: 記事の編集
+    create:
+      entry_was_successfully_created: 記事を作成しました
+    update:
+      entry_was_successfully_updated: 記事を更新しました
+    new:
+      new_entry: 記事の作成
+    history:
+      history: 変更履歴
+    form:
+      raw_title: タイトル
+      raw_body: 本文

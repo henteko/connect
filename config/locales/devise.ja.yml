@@ -1,0 +1,35 @@
+ja:
+  devise:
+    sessions:
+      new:
+        sign_in: ログイン
+      user:
+        signed_in: ログインしました
+        signed_out: ログアウトしました
+    passwords:
+      edit:
+        change_my_password: パスワードの変更
+        change_your_password: パスワードの変更
+      new:
+        reset_password: パスワードの再発行
+        send_me_reset_password_mail: パスワードの再発行用メールを送信
+      user:
+        send_instructions: パスワードの再発行用メールを送信しました
+    shared:
+      links:
+        forgot_your_password?: パスワードをお忘れですか？
+        sign_in: ログイン
+    invitations:
+      user:
+        send_instructions: 招待メールを送信しました
+        updated: パスワードを更新しました
+      new:
+        add_user: ユーザー追加
+        send_invitation_mail: 招待メールの送信
+      edit:
+        setting_password: パスワードの設定
+        password: パスワード
+        password_confirmation: パスワードの再入力
+    failure:
+      user:
+        not_found_in_database: メールアドレスもしくはパスワードが間違えています

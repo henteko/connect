@@ -20,7 +20,7 @@ module Markdown
       @renderer = Class.new(Redcarpet::Render::HTML) do
                     include WithPygments
                   end
-      markdown = Redcarpet::Markdown.new(@renderer.new)
+      markdown = Redcarpet::Markdown.new(@renderer.new, autolink: true)
       markdown.render(content)
     end
   end

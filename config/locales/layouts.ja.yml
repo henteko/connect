@@ -1,0 +1,13 @@
+ja:
+  layouts:
+    application:
+      page_list: ページ一覧
+      page_create: ページ作成
+      my_blog: 投稿一覧
+      new_entry: 新規投稿
+      links: リンク
+      setting: 設定
+      manage: 管理
+      profile: プロフィール
+      sign_out: ログアウト
+      post_an_issue: 問題・要望を投稿する

@@ -19,14 +19,14 @@ class BlogsController < ApplicationController
   # GET /blog/new
   def new
     @blog = Blog.new
-    add_breadcrumb 'New entry', "/#{current_user.username}/new"
+    add_breadcrumb t('.new_entry'), "/#{current_user.username}/new"
   end
 
   # GET /blog/1/edit
   def edit
     authorize! :edit, @blog
     add_breadcrumb @blog.title, @blog.path
-    add_breadcrumb 'Edit entry', @blog.edit_path
+    add_breadcrumb t('.editing_entry'), @blog.edit_path
   end
 
   # POST /blog
@@ -37,7 +37,7 @@ class BlogsController < ApplicationController
     respond_to do |format|
       if @blog.save
         format.html { redirect_to @blog.path,
-                      notice: 'Blog was successfully created.' }
+                      notice: t('.entry_was_successfully_created') }
         format.json { render action: 'show', status: :created, location: @blog }
       else
         format.html { render action: 'new' }
@@ -53,7 +53,7 @@ class BlogsController < ApplicationController
     respond_to do |format|
       if @blog.update(blog_params)
         format.html { redirect_to @blog.path,
-                      notice: 'Blog was successfully updated.' }
+                      notice: t('.entry_was_successfully_updated') }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -78,7 +78,7 @@ class BlogsController < ApplicationController
     user = User.find_by_username(params[:username])
     @blog = Blog.find_by(id: params[:id], user: user)
     add_breadcrumb @blog.title, @blog.path
-    add_breadcrumb 'Entry history', @blog.history_path
+    add_breadcrumb t('.history'), @blog.history_path
   end
 
   private
@@ -96,6 +96,6 @@ class BlogsController < ApplicationController
   end
 
   def add_breadcrumb_to_blogs_path
-    add_breadcrumb "#{params[:username]} blog", "/#{params[:username]}"
+    add_breadcrumb t('entry_list'), "/#{params[:username]}"
   end
 end

@@ -5,8 +5,8 @@
     <table class="table">
       <thead>
         <tr>
-          <th>Title</th>
-          <th>Url</th>
+          <th><%= t('.title') %></th>
+          <th><%= t('.url') %></th>
           <th></th>
         </tr>
       </thead>
@@ -15,12 +15,12 @@
           <tr>
             <td><%= link.title %></td>
             <td><%= link.url %></td>
-            <td  class="col-sm-4"><%= link_to 'Edit', edit_link_path(link), class: 'btn btn-default' %>
-            <%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+            <td  class="col-sm-4"><%= link_to t('.edit'), edit_link_path(link), class: 'btn btn-default' %>
+            <%= link_to t('.destroy'), link, method: :delete, data: { confirm: t('are_you_sure?') }, class: 'btn btn-danger' %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
-    <%= link_to 'New Link', new_link_path %>
+    <%= link_to t('.new_link'), new_link_path %>
   </div><!--/span-->
 </div><!--/row-->

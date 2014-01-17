@@ -1,0 +1,20 @@
+ja:
+  links:
+    index:
+      links: リンク
+      title: タイトル
+      url: URL
+      edit: 編集
+      destroy: 削除
+      new_link: リンクの作成
+    new:
+      creating_link: リンクの作成
+    edit:
+      editing_link: リンクの編集
+    create:
+      link_was_successfully_created: リンクを作成しました
+    update:
+      link_was_successfully_updated: リンクを更新しました
+    form:
+      title: タイトル
+      url: URL

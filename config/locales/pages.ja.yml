@@ -1,0 +1,24 @@
+ja:
+  pages:
+    navigation:
+      recent_entries: 最近の投稿
+      links: リンク
+    index:
+      page_list: ページ一覧
+      title: タイトル
+      edit: 編集
+      destroy: 削除
+    new:
+      creating_page: ページの作成
+    edit:
+      editing_page: ページの編集
+    create:
+      page_was_successfully_created: ページを作成しました
+    update:
+      page_was_successfully_updated: ページを更新しました
+    history:
+      history: 変更履歴
+    form:
+      raw_title: タイトル
+      raw_body: 本文
+      page_name: ページURL

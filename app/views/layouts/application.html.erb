@@ -53,9 +53,9 @@
         <% if user_signed_in? %>
           <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
-              <li><%= link_to t('.page'), pages_path %></li>
-              <li class="divider-vertical"><%= link_to t('.create'), new_page_path %></li>
-              <li><%= link_to t('.blog'), "/#{current_user.username}" %></li>
+              <li><%= link_to t('.page_list'), pages_path %></li>
+              <li class="divider-vertical"><%= link_to t('.page_create'), new_page_path %></li>
+              <li><%= link_to t('.my_blog'), "/#{current_user.username}" %></li>
               <li class="divider-vertical"><%= link_to t('.new_entry'), "/#{current_user.username}/new" %></li>
               <li><%= link_to t('.links'), links_path %></li>
               <li class="dropdown">
@@ -64,7 +64,7 @@
                 </a>
                 <ul class="dropdown-menu">
                   <% if can? :manage, current_user %>
-                    <li><%= link_to t('.project'), admin_users_path %></li>
+                    <li><%= link_to t('.manage'), admin_users_path %></li>
                   <% end %>
                   <li><%= link_to t('.profile'), edit_user_path %></li>
                   <li class="divider"></li>
@@ -86,11 +86,11 @@
       <%= yield %>
       <hr>
       <footer>
-        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p class="pull-right"><a href="#"><%= t('back_to_top') %></a></p>
         <% unless user_signed_in? %>
         <p><iframe src="http://ghbtns.com/github-btn.html?user=camelmasa&repo=connect&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="80" height="20"></iframe><iframe src="http://ghbtns.com/github-btn.html?user=camelmasa&repo=connect&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe></p>
         <% else %>
-          <p><%= link_to 'Post an issue' , 'https://github.com/camelmasa/connect/issues/new', target: '_blank' %></p>
+          <p><%= link_to t('.post_an_issue'), 'https://github.com/camelmasa/connect/issues/new', target: '_blank' %></p>
         <% end %>
       </footer>
     </div> <!-- /container -->

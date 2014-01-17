@@ -5,7 +5,7 @@ class Admin::NotificationsController < ApplicationController
 
   # GET /admin/notification
   def show
-    add_breadcrumb 'notification', admin_notification_path
+    add_breadcrumb t('.setting_notification'), admin_notification_path
   end
 
   # PUT /admin/notification
@@ -13,7 +13,7 @@ class Admin::NotificationsController < ApplicationController
     respond_to do |format|
       if @notification.update(notification_params)
         format.html { redirect_to admin_notification_path,
-                      notice: 'Notification was successfully updated.' }
+                      notice: t('.notification_was_successfully_updated') }
         format.json { head :no_content }
       else
         format.html { render action: 'show' }

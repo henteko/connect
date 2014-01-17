@@ -1,24 +1,24 @@
 <div class="row row-offcanvas row-offcanvas-right">
   <div class="col-xs-12 col-sm-9">
     <%= render '/shared/offcanvas' %>
-    <%= render '/shared/page_header', title: t('.profile') %>
+    <%= render '/shared/page_header', title: t('.editing_profile') %>
     <%= form_for(current_user, html: { class: 'form-horizontal', role: 'form' } ) do |f| %>
       <%= render '/shared/error_message', record: current_user %>
       <div class="form-group">
         <%= f.label :username, class: 'col-sm-2 control-label' %>
         <div class="col-sm-8">
-          <%= f.text_field :username, class: 'form-control', placeholder: 'Username', required: 'required' %>
+          <%= f.text_field :username, class: 'form-control', placeholder: t('.username'), required: 'required' %>
         </div>
       </div>
       <div class="form-group">
         <%= f.label :email, class: 'col-sm-2 control-label' %>
         <div class="col-sm-8">
-          <%= f.text_field :email, class: 'form-control', placeholder: 'Email', required: 'required' %>
+          <%= f.text_field :email, class: 'form-control', placeholder: t('.email'), required: 'required' %>
         </div>
       </div>
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-6">
-          <%= f.submit 'Update', class: 'btn btn-primary form-control' %>
+          <%= f.submit t('update'), class: 'btn btn-primary form-control' %>
         </div>
       </div>
     <% end %>

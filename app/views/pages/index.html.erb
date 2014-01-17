@@ -1,11 +1,11 @@
 <div class="row row-offcanvas row-offcanvas-right">
   <div class="col-xs-12 col-sm-9">
     <%= render '/shared/offcanvas' %>
-    <%= render '/shared/page_header', title: t('.pages') %>
+    <%= render '/shared/page_header', title: t('.page_list') %>
     <table class="table">
       <thead>
         <tr>
-          <th>Title</th>
+          <th><%= t('.title') %></th>
           <th></th>
         </tr>
       </thead>
@@ -13,8 +13,8 @@
         <% @pages.each do |page| %>
           <tr>
             <td><%= link_to page.title, page.path %></td>
-            <td  class="col-sm-4"><%= link_to 'Edit', page.edit_path, class: 'btn btn-default' %>
-            <%= link_to 'Destroy', page, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+            <td  class="col-sm-4"><%= link_to t('.edit'), page.edit_path, class: 'btn btn-default' %>
+            <%= link_to t('.destroy'), page, method: :delete, data: { confirm: t('are_you_sure?') }, class: 'btn btn-danger' %></td>
           </tr>
         <% end %>
       </tbody>

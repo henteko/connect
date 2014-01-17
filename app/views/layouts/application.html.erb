@@ -87,7 +87,11 @@
       <hr>
       <footer>
         <p class="pull-right"><a href="#">Back to top</a></p>
+        <% unless user_signed_in? %>
         <p><iframe src="http://ghbtns.com/github-btn.html?user=camelmasa&repo=connect&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="80" height="20"></iframe><iframe src="http://ghbtns.com/github-btn.html?user=camelmasa&repo=connect&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe></p>
+        <% else %>
+          <p><%= link_to 'Post an issue' , 'https://github.com/camelmasa/connect/issues/new', target: '_blank' %></p>
+        <% end %>
       </footer>
     </div> <!-- /container -->
   </body>

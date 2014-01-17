@@ -4,6 +4,9 @@ Connect::Application.routes.draw do
 
   root 'pages#show', page_name: 'home'
 
+  # Comment routing
+  resources :comments, only: [:create, :update, :destroy]
+
   # User routing
   resource :user, only: [:edit, :update]
 

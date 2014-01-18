@@ -11,5 +11,4 @@ class Document < ActiveRecord::Base
     self.title = raw_title
     self.body  = raw_body
   end
-
 end

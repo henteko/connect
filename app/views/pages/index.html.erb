@@ -12,8 +12,8 @@
       <tbody>
         <% @pages.each do |page| %>
           <tr>
-            <td><%= link_to page.title, page.path %></td>
-            <td  class="col-sm-4"><%= link_to t('.edit'), page.edit_path, class: 'btn btn-default' %>
+            <td><%= link_to page.title, page_path(id: page.page_name) %></td>
+            <td  class="col-sm-4"><%= link_to t('.edit'), edit_page_path(id: page.page_name), class: 'btn btn-default' %>
             <%= link_to t('.destroy'), page, method: :delete, data: { confirm: t('are_you_sure?') }, class: 'btn btn-danger' %></td>
           </tr>
         <% end %>

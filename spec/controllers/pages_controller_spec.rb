@@ -19,12 +19,12 @@ describe PagesController do
 
   describe '#show' do
     it 'redirect to sign in page' do
-      get :show, page_name: page.page_name
+      get :show, id: page.page_name
       expect(response.header['Location']).to eq new_user_session_url
     end
     it 'returns 200' do
       sign_in user
-      get :show, page_name: page.page_name
+      get :show, id: page.page_name
       expect(response.status).to eq 200
     end
   end
@@ -43,12 +43,12 @@ describe PagesController do
 
   describe '#edit' do
     it 'redirect to sign in page' do
-      get :edit, page_name: page.page_name
+      get :edit, id: page.page_name
       expect(response.header['Location']).to eq new_user_session_url
     end
     it 'returns 200' do
       sign_in user
-      get :edit, page_name: page.page_name
+      get :edit, id: page.page_name
       expect(response.status).to eq 200
     end
   end

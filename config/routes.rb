@@ -2,8 +2,6 @@ Connect::Application.routes.draw do
 
   devise_for :users, path: 'user', controllers: { invitations: 'users/invitations' }
 
-  root 'pages#show', page_name: 'home'
-
   # Comment routing
   resources :comments, only: [:create, :update, :destroy]
 
@@ -20,10 +18,12 @@ Connect::Application.routes.draw do
   resources :links, except: [:show]
 
   # Page routing
-  resources :pages, except: [:show, :edit]
-  get '/pages/:page_name'         => 'pages#show'
-  get '/pages/:page_name/edit'    => 'pages#edit'
-  get '/pages/:page_name/history' => 'pages#history'
+  root 'pages#show', id: 'home'
+  resources :pages, id: /[\w\-]+/ do
+    member do
+      get 'history'
+    end
+  end
 
   # Blog routing
   resources :blogs, path: 'blog', except: [:new, :show, :edit]

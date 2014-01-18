@@ -11,7 +11,6 @@ Connect::Application.routes.draw do
   resource :user, only: [:edit, :update]
 
   # Admin setting routing
-  get '/admin' => 'admin#index'
   namespace :admin do
     resource :notification, only: [:show, :update]
     resources :users, except: [:new, :show, :create]

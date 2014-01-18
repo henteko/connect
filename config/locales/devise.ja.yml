@@ -21,6 +21,7 @@ ja:
         sign_in: ログイン
     invitations:
       user:
+        invitation_token_invalid: トークンが無効です
         send_instructions: 招待メールを送信しました
         updated: パスワードを更新しました
       new:

@@ -1,10 +1,14 @@
 class Hipchat < Notification
   def notify(object)
-    message = object.versions.count == 1 ? 'Created ' : 'Updated '
-    message << object.class.to_s.downcase
-
-    # TODO: Add link to object page url
-    # message << " <a href='#{object.url}'>#{object.title}</a>"
+    message = "<a href='#{object.user.url}'>#{object.user.at_username}</a> "
+    message += if object.class == Page
+                 (object.versions.count == 1 ? 'created' : 'updated') + ' page'
+               elsif object.class == Blog
+                 (object.versions.count == 1 ? 'created' : 'updated') + ' entry'
+               else
+                 'commented'
+               end
+    message += " <a href='#{object.url}'>#{object.title}</a>"
 
     client = HipChat::Client.new(token)
     client[room_name].send('Connect', message, notify: false,

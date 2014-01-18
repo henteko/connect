@@ -11,7 +11,15 @@ class Comment < ActiveRecord::Base
     self.body = raw_body
   end
 
+  def title
+    @title ||= blog.title
+  end
+
   def username
     @username ||= user.username
+  end
+
+  def url
+    [Settings.connect.url, username, blog_id].join('/') + "#commet-id-#{id}"
   end
 end

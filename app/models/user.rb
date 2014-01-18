@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
 
   # Validations
   validates :email, presence: true
+  validates :username, uniqueness: true, format: { with: /[\w\-]/ },
+                       allow_blank: true
 
   # Instance methods
   def url

@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
   # Validations
   validates :email, presence: true
-  validates :username, uniqueness: true, format: { with: /[\w\-]/ },
+  validates :username, uniqueness: true, format: { with: /\A[\w\-]+\z/ },
                        allow_blank: true
 
   # Instance methods

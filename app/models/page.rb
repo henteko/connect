@@ -1,7 +1,7 @@
 class Page < Document
   # Validations
   validates :page_name, presence: true, uniqueness: true,
-                        format: { with: /[\w\-]/ }
+                        format: { with: /\A[\w\-]+\z/ }
 
   # Instance methods
   def url

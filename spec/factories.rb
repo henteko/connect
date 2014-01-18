@@ -27,6 +27,7 @@ FactoryGirl.define do
   end
 
   factory :page do
+    user
     title     'title'
     raw_title 'title'
     body      'body'

@@ -61,7 +61,7 @@ describe PagesController do
     context 'with sign in' do
       before { sign_in user }
       it 'returns 302' do
-        post :create, page: { raw_title: 'title', raw_body: 'body' }
+        post :create, page: { raw_title: 'title', raw_body: 'body', page_name: 'page_name' }
         expect(response.status).to eq 302
       end
       it 'returns 200' do

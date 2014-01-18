@@ -13,5 +13,8 @@ class Hipchat < Notification
     client = HipChat::Client.new(token)
     client[room_name].send('Connect', message, notify: false,
                            message_format: 'html')
+
+  rescue HipChat::UnknownRoom
+    logger.error("Faild to notify HipChat: HipChat::UnknownRoom")
   end
 end

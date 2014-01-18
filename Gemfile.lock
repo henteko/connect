@@ -193,6 +193,7 @@ GEM
     seed-fu (2.3.0)
       activerecord (>= 3.1, < 4.1)
       activesupport (>= 3.1, < 4.1)
+    settingslogic (2.0.9)
     shoulda-matchers (2.5.0)
       activesupport (>= 3.0.0)
     simplecov (0.8.2)
@@ -268,6 +269,7 @@ DEPENDENCIES
   sass-rails (~> 4.0.0)
   sdoc
   seed-fu
+  settingslogic
   shoulda-matchers
   sqlite3
   turbolinks

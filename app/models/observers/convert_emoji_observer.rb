@@ -3,7 +3,7 @@ class ConvertEmojiObserver < ActiveRecord::Observer
   observe :page, :blog, :comment
 
   def before_save(record)
-    if record.respond_to?('title')
+    if record.respond_to?('title=')
       record.title = convert_emoji_to_html(record.title)
     end
     record.body = convert_emoji_to_html(record.body)

@@ -1,13 +1,15 @@
 class User < ActiveRecord::Base
-
-  has_many :blogs
-  has_many :pages
-
-  validates :email, presence: true
-
   devise :invitable, :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  # Relations
+  has_many :blogs
+  has_many :pages
+
+  # Validations
+  validates :email, presence: true
+
+  # Instance methods
   def url
     # TODO: Create user page
     # [Settings.connect.url, username].join('/')

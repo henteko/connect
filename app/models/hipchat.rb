@@ -1,4 +1,5 @@
 class Hipchat < Notification
+  # Instance methods
   def notify(object)
     message = "<a href='#{object.user.url}'>#{object.user.at_username}</a> "
     message += if object.class == Page

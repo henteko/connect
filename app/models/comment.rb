@@ -1,16 +1,21 @@
 class Comment < ActiveRecord::Base
+  has_paper_trail
 
+  # Relations
   belongs_to :blog
   belongs_to :user
 
-  validates :raw_body,  presence: true
+  # Validations
+  validates :blog_id,  presence: true, numericality: true
+  validates :user_id,  presence: true, numericality: true
+  validates :raw_body, presence: true
 
-  has_paper_trail
-
+  # Callbacks
   before_save do
     self.body = raw_body
   end
 
+  # Instance methods
   def title
     @title ||= blog.title
   end

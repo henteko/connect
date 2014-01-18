@@ -1,6 +1,8 @@
 class Blog < Document
+  # Relations
   has_many :comments
 
+  # Instance methods
   def username
     @username ||= user.username
   end

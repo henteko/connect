@@ -27,7 +27,7 @@ Connect::Application.routes.draw do
 
   # Blog routing
   scope ':username' do
-    resources :blogs do
+    resources :blogs, path: 'blog' do
       member do
         get 'history'
       end

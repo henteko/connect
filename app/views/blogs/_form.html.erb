@@ -1,4 +1,4 @@
-<%= form_for @blog, html: { class: 'form-horizontal', role: 'form' } do |f| %>
+<%= form_for @blog, url: @blog.new_record? ? blogs_path(username: current_user.username) : blog_path(@blog, username: @blog.username), html: { class: 'form-horizontal', role: 'form' } do |f| %>
   <%= render '/shared/error_message', record: @blog %>
   <div class="form-group">
     <%= f.label :raw_title, class: 'col-sm-2 control-label' %>

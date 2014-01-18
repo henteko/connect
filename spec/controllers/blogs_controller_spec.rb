@@ -65,17 +65,17 @@ describe BlogsController do
 
   describe '#create' do
     it 'redirect to sign in page' do
-      post :create, blog: { raw_title: 'title', raw_body: 'body' }
+      post :create, username: blog.username, blog: { raw_title: 'title', raw_body: 'body' }
       expect(response.header['Location']).to eq new_user_session_url
     end
     context 'with sign in blog owner' do
       before { sign_in blog_owner }
       it 'returns 302' do
-        post :create, blog: { raw_title: 'title', raw_body: 'body' }
+        post :create, username: blog.username, blog: { raw_title: 'title', raw_body: 'body' }
         expect(response.status).to eq 302
       end
       it 'returns 200' do
-        post :create, blog: { raw_title: 'title' }
+        post :create, username: blog.username, blog: { raw_title: 'title' }
         expect(response.status).to eq 200
       end
     end
@@ -83,17 +83,17 @@ describe BlogsController do
 
   describe '#update' do
     it 'redirect to sign in page' do
-      put :update, id: blog.id, blog: { raw_title: 'title', raw_body: 'body' }
+      put :update, id: blog.id, username: blog.username, blog: { raw_title: 'title', raw_body: 'body' }
       expect(response.header['Location']).to eq new_user_session_url
     end
     context 'with sign in blog owner' do
       before { sign_in blog_owner }
       it 'returns 302' do
-        put :update, id: blog.id, blog: { raw_title: 'title', raw_body: 'body' }
+        put :update, id: blog.id, username: blog.username, blog: { raw_title: 'title', raw_body: 'body' }
         expect(response.status).to eq 302
       end
       it 'returns 200' do
-        put :update, id: blog.id, blog: { raw_title: 'title', raw_body: '' }
+        put :update, id: blog.id, username: blog.username, blog: { raw_title: 'title', raw_body: '' }
         expect(response.status).to eq 200
       end
     end
@@ -101,7 +101,7 @@ describe BlogsController do
       before { sign_in blog_reader }
       it 'raise CanCan::AccessDenied' do
         expect {
-          put :update, id: blog.id, blog: { raw_title: 'title', raw_body: 'body' }
+          put :update, id: blog.id, username: blog.username, blog: { raw_title: 'title', raw_body: 'body' }
         }.to raise_error(CanCan::AccessDenied)
       end
     end
@@ -121,13 +121,13 @@ describe BlogsController do
 
   describe '#destroy' do
     it 'redirect to sign in page' do
-      delete :destroy, id: blog.id
+      delete :destroy, id: blog.id, username: blog.username
       expect(response.header['Location']).to eq new_user_session_url
     end
     context 'with sign in blog owner' do
       before { sign_in blog_owner }
       it 'returns 200' do
-        delete :destroy, id: blog.id
+        delete :destroy, id: blog.id, username: blog.username
         expect(response.status).to eq 302
       end
     end
@@ -135,7 +135,7 @@ describe BlogsController do
       before { sign_in blog_reader }
       it 'raise CanCan::AccessDenied' do
         expect {
-          delete :destroy, id: blog.id
+          delete :destroy, id: blog.id, username: blog.username
         }.to raise_error(CanCan::AccessDenied)
       end
     end

@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment.blog.path,
+        format.html { redirect_to blog_url(@comment.blog, username: @comment.username),
                       notice: t('.comment_was_successfully_created') }
         format.json { render action: 'show', status: :created, location: @comment }
       else
@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
   def update
     respond_to do |format|
       if @comment.update(comment_params)
-        format.html { redirect_to @comment.blog.path,
+        format.html { redirect_to blog_url(@comment.blog, username: @comment.username),
                       notice: t('.comment_was_successfully_updated') }
         format.json { render action: 'show', status: :ok, location: @comment }
       else
@@ -38,7 +38,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to @comment.blog.path}
+      format.html { redirect_to blog_url(@comment.blog, username: @comment.username) }
       format.json { head :no_content }
     end
   end

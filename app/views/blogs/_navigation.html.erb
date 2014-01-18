@@ -2,7 +2,7 @@
   <h4><%= t('.recent_entries') %></h4>
   <div class="list-group">
     <% Blog.where(user: @blog.user).limit(10).order('created_at desc').each do |blog| %>
-      <%= link_to blog.title, blog.path, class: 'list-group-item' %>
+      <%= link_to blog.title, blog_path(blog, username: blog.username), class: 'list-group-item' %>
     <% end %>
   </div>
 </div>

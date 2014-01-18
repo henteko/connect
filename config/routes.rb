@@ -26,11 +26,11 @@ Connect::Application.routes.draw do
   end
 
   # Blog routing
-  resources :blogs, path: 'blog', except: [:new, :show, :edit]
-  get '/:username'             => 'blogs#index'
-  get '/:username/new'         => 'blogs#new'
-  get '/:username/:id'         => 'blogs#show'
-  get '/:username/:id/edit'    => 'blogs#edit'
-  get '/:username/:id/history' => 'blogs#history'
-
+  scope ':username' do
+    resources :blogs do
+      member do
+        get 'history'
+      end
+    end
+  end
 end

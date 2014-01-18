@@ -12,9 +12,9 @@
       <tbody>
         <% @blogs.each do |blog| %>
           <tr>
-            <td><%= link_to blog.title, blog.path %></td>
-            <td  class="col-sm-4"><%= link_to t('.edit'), blog.edit_path, class: 'btn btn-default' %>
-            <%= link_to t('.destroy'), blog, method: :delete, data: { confirm: t('are_you_sure?') }, class: 'btn btn-danger' %></td>
+            <td><%= link_to blog.title, blog_path(blog, username: blog.username) %></td>
+            <td  class="col-sm-4"><%= link_to t('.edit'), edit_blog_path(blog, username: blog.username), class: 'btn btn-default' %>
+            <%= link_to t('.destroy'), blog_path(blog, username: blog.username), method: :delete, data: { confirm: t('are_you_sure?') }, class: 'btn btn-danger' %></td>
           </tr>
         <% end %>
       </tbody>

@@ -11,4 +11,7 @@ class Comment < ActiveRecord::Base
     self.body = raw_body
   end
 
+  def username
+    @username ||= user.username
+  end
 end

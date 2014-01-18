@@ -3,82 +3,71 @@ class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
   before_action :add_breadcrumb_to_blogs_path
 
-  # GET /:username
-  # GET /:username.json
+  # GET /:username/blogs
   def index
-    user = User.find_by_username(params[:username])
-    @blogs = Blog.where(user: user).page(params[:page])
+    @blogs = User.find_by_username(params[:username]).blogs.page(params[:page])
   end
 
-  # GET /:username/:id
-  # GET /:username/:id.json
+  # GET /:username/blogs/1
   def show
-    add_breadcrumb @blog.title, @blog.path
+    add_breadcrumb @blog.title, blog_path(@blog, username: @blog.username)
   end
 
-  # GET /blog/new
+  # GET /:username/blogs/new
   def new
     @blog = Blog.new
-    add_breadcrumb t('.new_entry'), "/#{current_user.username}/new"
+    add_breadcrumb t('.new_entry'), new_blog_path
   end
 
-  # GET /blog/1/edit
+  # GET /:username/blogs/1/edit
   def edit
     authorize! :edit, @blog
-    add_breadcrumb @blog.title, @blog.path
-    add_breadcrumb t('.editing_entry'), @blog.edit_path
+    add_breadcrumb @blog.title, blog_path(@blog, username: @blog.username)
+    add_breadcrumb t('.editing_entry'), edit_blog_path(@blog, username: @blog.username)
   end
 
-  # POST /blog
-  # POST /blog.json
+  # POST /:username/blogs
   def create
     @blog = Blog.new(blog_params)
 
     respond_to do |format|
       if @blog.save
-        format.html { redirect_to @blog.path,
+        format.html { redirect_to blog_url(@blog, username: @blog.username),
                       notice: t('.entry_was_successfully_created') }
-        format.json { render action: 'show', status: :created, location: @blog }
       else
         format.html { render action: 'new' }
-        format.json { render json: @blog.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /blog/1
-  # PATCH/PUT /blog/1.json
+  # PATCH/PUT /:username/blogs/1
   def update
     authorize! :update, @blog
     respond_to do |format|
       if @blog.update(blog_params)
-        format.html { redirect_to @blog.path,
+        format.html { redirect_to blog_url(@blog, username: @blog.username),
                       notice: t('.entry_was_successfully_updated') }
-        format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @blog.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /blog/1
-  # DELETE /blog/1.json
+  # DELETE /:username/blogs/1
   def destroy
     authorize! :destroy, @blog
     @blog.destroy
     respond_to do |format|
       format.html { redirect_to blogs_url }
-      format.json { head :no_content }
     end
   end
 
-  # GET /:username/:id/history
+  # GET /:username/blogs/1/history
   def history
     user = User.find_by_username(params[:username])
     @blog = Blog.find_by(id: params[:id], user: user)
-    add_breadcrumb @blog.title, @blog.path
-    add_breadcrumb t('.history'), @blog.history_path
+    add_breadcrumb @blog.title, blog_path(@blog, username: @blog.username)
+    add_breadcrumb t('.history'), history_blog_path(@blog, username: @blog.username)
   end
 
   private
@@ -96,6 +85,6 @@ class BlogsController < ApplicationController
   end
 
   def add_breadcrumb_to_blogs_path
-    add_breadcrumb t('entry_list'), "/#{params[:username]}"
+    add_breadcrumb t('entry_list'), blogs_path
   end
 end

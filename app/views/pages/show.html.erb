@@ -3,7 +3,7 @@
     <%= render '/shared/offcanvas' %>
     <%= render 'page_header' %>
     <div>
-      <%= @page.body.html_safe %>
+      <%= raw @page.body %>
     </div>
   </div><!--/span-->
   <%= render 'navigation' if params[:id] == 'home' %>

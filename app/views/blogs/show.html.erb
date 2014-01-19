@@ -3,7 +3,7 @@
     <%= render '/shared/offcanvas' %>
     <%= render 'page_header' %>
     <div>
-      <%= @blog.body.html_safe %>
+      <%= raw @blog.body %>
     </div>
     <hr>
     <div>
@@ -13,7 +13,7 @@
             <span><strong>Commented by <%= comment.user.username %></strong><small class="pull-right"><%= comment.created_at %></small></span>
           </div>
             <div class="panel-body">
-              <%= comment.body.html_safe %>
+              <%= raw comment.body %>
             </div>
         </div>
       <% end %>

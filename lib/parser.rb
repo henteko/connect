@@ -14,9 +14,10 @@ module Parser
 
   class Emoji
     include EmojiConverter
+    include ERB::Util
 
     def render(content)
-      convert_emoji_to_html(ERB::Util.h(content))
+      convert_emoji_to_html(h(content))
     end
   end
 
@@ -28,34 +29,20 @@ module Parser
       text.gsub!("\n", "<br>\n")
       %Q{<p>#{text}</p>\n}
     end
-
-    def list_item(text, list_type)
-      text = convert_emoji_to_html(text)
-      %Q{<li>#{text}</li>\n}
-    end
-
-    def table_cell(content, alignment)
-      content = convert_emoji_to_html(content)
-      %Q{<td align="#{alignment}">#{content}</td>}
-    end
   end
 
   class Markdown
     def self.render(content)
       renderer = MarkdownRenderer.new(
-        filter_html: true,
-        safe_links_only: true,
         hard_wrap: true,
+        filter_html: true
       )
-
       markdown = Redcarpet::Markdown.new(
         renderer,
         fenced_code_blocks: true,
-        no_intra_emphasis:  true,
-        tables:             true,
         autolink:           true
       )
-      markdown.render(ERB::Util.h(content))
+      markdown.render(content)
     end
   end
 end

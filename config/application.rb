@@ -25,8 +25,8 @@ module Connect
     config.i18n.default_locale = :ja
 
     config.active_record.observers = [
+      :convert_emoji_to_html_observer,
       :convert_markdown_to_html_observer,
-      :convert_emoji_observer,
       :notify_to_service_observer
     ]
   end

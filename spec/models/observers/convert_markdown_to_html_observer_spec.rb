@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe ConvertMarkdownToHtmlObserver do
-  let (:observer) { ConvertEmojiObserver.instance }
+  let (:observer) { ConvertMarkdownToHtmlObserver.instance }
 
   TARGETS = [Page, Blog, Comment]
 
@@ -21,7 +21,7 @@ describe ConvertMarkdownToHtmlObserver do
       context "when #{klass}" do
         pending 'convert markdown to html' do
           object = create(klass.to_s.underscore)
-          Markdown::Parser.should_receive :convert
+          Parser::Markdown.should_receive :convert
           observer.before_save(object)
         end
       end

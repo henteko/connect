@@ -10,7 +10,7 @@ class BlogsController < ApplicationController
 
   # GET /:username/blogs/1
   def show
-    add_breadcrumb @blog.title, blog_path(@blog, username: @blog.username)
+    add_breadcrumb @blog.title.html_safe, blog_path(@blog, username: @blog.username)
   end
 
   # GET /:username/blogs/new
@@ -22,7 +22,7 @@ class BlogsController < ApplicationController
   # GET /:username/blogs/1/edit
   def edit
     authorize! :edit, @blog
-    add_breadcrumb @blog.title, blog_path(@blog, username: @blog.username)
+    add_breadcrumb @blog.title.html_safe, blog_path(@blog, username: @blog.username)
     add_breadcrumb t('.editing_entry'), edit_blog_path(@blog, username: @blog.username)
   end
 
@@ -66,7 +66,7 @@ class BlogsController < ApplicationController
   def history
     user = User.find_by_username(params[:username])
     @blog = Blog.find_by(id: params[:id], user: user)
-    add_breadcrumb @blog.title, blog_path(@blog, username: @blog.username)
+    add_breadcrumb @blog.title.html_safe, blog_path(@blog, username: @blog.username)
     add_breadcrumb t('.history'), history_blog_path(@blog, username: @blog.username)
   end
 

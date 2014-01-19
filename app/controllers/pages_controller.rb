@@ -12,7 +12,7 @@ class PagesController < ApplicationController
   # GET /pages/:page_name
   # GET /pages/:page_name.json
   def show
-    add_breadcrumb @page.title, page_path(id: @page.page_name)
+    add_breadcrumb @page.title.html_safe, page_path(id: @page.page_name)
   end
 
   # GET /pages/new
@@ -23,7 +23,7 @@ class PagesController < ApplicationController
 
   # GET /pages/:page_name/edit
   def edit
-    add_breadcrumb @page.title, page_path(id: @page.page_name)
+    add_breadcrumb @page.title.html_safe, page_path(id: @page.page_name)
     add_breadcrumb t('.editing_page'), edit_page_path(id: @page.page_name)
   end
 
@@ -72,7 +72,7 @@ class PagesController < ApplicationController
 
   # GET /pages/:page_name/history
   def history
-    add_breadcrumb @page.title, page_path(id: @page.page_name)
+    add_breadcrumb @page.title.html_safe, page_path(id: @page.page_name)
     add_breadcrumb t('.history'), history_page_path(id: @page.page_name)
   end
 

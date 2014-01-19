@@ -3,7 +3,7 @@
     <h4><%= t('.recent_entries') %></h4>
     <div class="list-group">
       <% Blog.order('created_at desc').each do |blog| %>
-        <%= link_to blog.title, blog_path(blog, username: blog.username), class: 'list-group-item' %>
+        <%= link_to raw(blog.title), blog_path(blog, username: blog.username), class: 'list-group-item' %>
       <% end %>
     </div>
   <% end %>

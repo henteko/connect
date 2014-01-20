@@ -11,6 +11,11 @@ class User < ActiveRecord::Base
   validates :username, uniqueness: true, format: { with: /\A[\w\-]+\z/ },
                        allow_blank: true
 
+  # Callbacks
+  after_save do
+    self.update_column('username', "user-#{id}") unless username
+  end
+
   # Instance methods
   def url
     # TODO: Create user page

@@ -37,7 +37,7 @@
     <%= javascript_include_tag "application" %>
   </head>
   <body>
-    <div class="navbar navbar-default navbar-static-top" role="navigation">
+    <div id="top" class="navbar navbar-default navbar-static-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
           <% if user_signed_in? %>
@@ -86,7 +86,7 @@
       <%= yield %>
       <hr>
       <footer>
-        <p class="pull-right"><a href="#"><%= t('back_to_top') %></a></p>
+        <p class="pull-right"><a href="#top"><%= t('back_to_top') %></a></p>
         <% unless user_signed_in? %>
         <p><iframe src="http://ghbtns.com/github-btn.html?user=camelmasa&repo=connect&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="80" height="20"></iframe><iframe src="http://ghbtns.com/github-btn.html?user=camelmasa&repo=connect&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe></p>
         <% else %>
